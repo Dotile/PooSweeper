@@ -31,18 +31,21 @@ initBoard(_dimx, _dimy, _nummine) {
   // Copy zeros in the array (empty)
   for (int i; i <= _dimx; i++) {
     for (int y; y <= _dimy; y++) {
-    _gameboard[i][j] = 0;
+      _gameboard[i][j] = 0;
     }
   }
   // Randomly overwrite zeros with mines (1)
-  for (int b; b <= _nummine; b++) {
-  
+  for (int k = 0; i < _nummine;) {
+    _minex = random() % _dimx;
+    _miney = random() % _dimy;
+    // If there is space put in a mine
+    if (_gameboard[_minex][_miney] == 0) {
+      _gameboard[_minex][_miney] = 1;
+      k++;
+    }
   }
-
-// ____________________________________________________________________________  
-~Initialize(){
-
+}
+// _____________________________________________________________________________
+~Initialize() {
 }
 
-
- 
