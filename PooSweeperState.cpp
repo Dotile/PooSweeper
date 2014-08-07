@@ -1,31 +1,26 @@
 // Copyright 2014 Dominik Leclerc
 
+#include <vector>
 #include "./PooSweeperState.h"
 
 // _____________________________________________________________________________
 void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos) {
   // Create an arraz the Size of numRows and numCols.
-  new int _poofield[numRows][numCols];
-  // Fill the array with zeros (no Poos).
-  for (int i; i <= numRows; i++) {
-    for (int j; j <= numCols; j++) {
-      _poofield[i][j] = 0;
+  _pooField.resize(numRows);
+  for (int i = 0; i < numRows; ++i) {
+    for (int j = 0; j < numCols; ++j) {
+      _pooField[i].push_back(NO_POO);
     }
   }
+
   // Fill the array randomly with Poos.
-  for (int k; k <= numPoos; k++) {
+  for (int k; k <= numPoos;) {
     int _minex = random () % numRows;
     int _miney = random () % numCols;
-    // If there is space put in the mine (1)
-    if (_poofield[_minex][_miney] == 0) {
-      _poofield[_minex][_miney] = 1;
+    // If there is space put in the poo
+    if (_pooField[_minex][_miney] == NO_POO) {
+      _pooField[_minex][_miney] = POO;
+      k++;
     }
-    k++;
   }
 }
-
-// ____________________________________________________________________________
-PooSweeperState::~PooSweeperState() { 
-  delete _poofield;
-}
-
