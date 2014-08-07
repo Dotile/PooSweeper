@@ -5,7 +5,7 @@
 // _____________________________________________________________________________
 void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos) {
   // Create an arraz the Size of numRows and numCols.
-  new _poofield[numRows][numCols];
+  new int _poofield[numRows][numCols];
   // Fill the array with zeros (no Poos).
   for (int i; i <= numRows; i++) {
     for (int j; j <= numCols; j++) {
@@ -25,7 +25,7 @@ void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
 }
 
 // ____________________________________________________________________________
-PooSweeperState::~PooSweeperStateBase() { 
+PooSweeperState::~PooSweeperState() { 
   delete _poofield;
 }
 
