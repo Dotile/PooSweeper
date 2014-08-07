@@ -2,8 +2,8 @@
 // Chair of Algorithms and Data Structures.
 // Author: Hannah Bast <bast@cs.uni-freiburg.de>.
 
-#ifndef PROJEKT_POOSWEEPERSTATE_H_
-#define PROJEKT_POOSWEEPERSTATE_H_
+#ifndef POOSWEEPERSTATE_H_
+#define POOSWEEPERSTATE_H_
 
 #include <vector>
 #include "./PooSweeperMove.h"
@@ -15,7 +15,6 @@ extern PooSweeperStateBase* POO;
 // Class representing a state of the Minesweeper game.
 class PooSweeperState : public PooSweeperStateBase {
  public:
-
   CellInfo getCellInfo(size_t rowIndex, size_t colIndex) const;
 
   // Initialize (randomly).
@@ -45,4 +44,4 @@ class PooSweeperState : public PooSweeperStateBase {
   std::vector<std::vector<poo>> _pooField;
 };
 
-#endif  // PROJEKT_POOSWEEPERSTATE_H_
+#endif  // POOSWEEPERSTATE_H_

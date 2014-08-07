@@ -4,7 +4,8 @@
 #include "./PooSweeperState.h"
 
 // _____________________________________________________________________________
-void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos) {
+void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
+{
   // Create an arraz the Size of numRows and numCols.
   _pooField.resize(numRows);
   for (int i = 0; i < numRows; ++i) {
@@ -15,8 +16,8 @@ void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
 
   // Fill the array randomly with Poos.
   for (int k; k <= numPoos;) {
-    int _minex = random () % numRows;
-    int _miney = random () % numCols;
+    int _minex = random() % numRows;
+    int _miney = random() % numCols;
     // If there is space put in the poo
     if (_pooField[_minex][_miney] == NO_POO) {
       _pooField[_minex][_miney] = POO;

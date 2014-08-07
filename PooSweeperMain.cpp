@@ -3,5 +3,7 @@
 #include "./PooSweeperStateBase.h"
 #include "./PooSweeperDisplayBase.h"
 
-int PooSweeperMain () {
+#define PooSweeperMain main
+
+int PooSweeperMain() {
 }
