@@ -4,6 +4,9 @@
 
 #include "./PooSweeperStateBase.h"
 
+#ifndef POOSWEEPERDISPLAYBASE_H_
+#define POOSWEEPERDISPLAYBASE_H_
+
 class PooSweeperDisplayBase;
 extern PooSweeperDisplayBase* DISPLAY;
 
@@ -12,3 +15,5 @@ class PooSweeperDisplayBase {
  public:
   virtual void show(const PooSweeperStateBase* state) const = 0;
 };
+
+#endif  // POOSWEEPERDISPLAYBASE_H_

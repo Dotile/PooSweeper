@@ -6,7 +6,7 @@
 // _____________________________________________________________________________
 void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
 {
-  // Create an arraz the Size of numRows and numCols.
+  // Create an vector the Size of numRows and numCols.
   _pooField.resize(numRows);
   for (int i = 0; i < numRows; ++i) {
     for (int j = 0; j < numCols; ++j) {
@@ -14,7 +14,7 @@ void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
     }
   }
 
-  // Fill the array randomly with Poos.
+  // Fill the vector randomly with Poos.
   for (int k; k <= numPoos;) {
     int _minex = random() % numRows;
     int _miney = random() % numCols;

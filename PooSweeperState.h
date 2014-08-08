@@ -1,6 +1,4 @@
-// Copyright 2014, University of Freiburg,
-// Chair of Algorithms and Data Structures.
-// Author: Hannah Bast <bast@cs.uni-freiburg.de>.
+// Copyright 2014 Dominik Leclerc
 
 #ifndef POOSWEEPERSTATE_H_
 #define POOSWEEPERSTATE_H_
