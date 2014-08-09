@@ -36,7 +36,7 @@ CellInfo PooSweeperState::getCellInfo(size_t rowIndex, size_t colIndex) {
    CellInfo = REVEALED_POO;
  }
  // Upper left
- if(_pooField[rowIndex - 1][colIndex - 1 == POO) {
+ if(_pooField[rowIndex - 1][colIndex - 1] == POO) {
    CellInfo++;
  }
  // Upper middle
@@ -64,7 +64,7 @@ CellInfo PooSweeperState::getCellInfo(size_t rowIndex, size_t colIndex) {
    CellInfo++;
  }
  // Lower right 
- if(_pooField[rowIndex + 1][colIndex] == POO) {
+ if(_pooField[rowIndex + 1][colIndex + 1] == POO) {
    CellInfo++;
  }
  return CellInfo;
