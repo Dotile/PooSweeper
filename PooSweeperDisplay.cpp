@@ -16,7 +16,9 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) {
     for (int j = 0; j < _poofield[i].size; ++j) {
       switch (_poofield[i][j]) {
         case UNREVEALED:
-          // printf command goes here
+          printf("\x1b[%d;%dH", i, j);
+          printf("X");
+          fflush(stdout);
           // show unrevealed cell
           break;
         case REVEALED:
