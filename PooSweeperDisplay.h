@@ -13,7 +13,7 @@ extern PooSweeperDisplayBase* DISPLAY;
 // Class for showing a state of the game on the screen.
 class PooSweeperDisplay : public PooSweeperStateBase {
  public:
-  void show(const PooSweeperStateBase* state) const = 0;
+  void show(const PooSweeperStateBase* state);
 };
 
 #endif  // POOSWEEPERDISPLAY_H_
