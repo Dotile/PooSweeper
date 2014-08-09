@@ -10,6 +10,9 @@
 // A move.
 class PooSweeperMove {
  public:
+  // Grab mouse events and return a move
+  void getMove();
+
   // The position of the cell to be uncovered next.
   size_t row;
   size_t col;
