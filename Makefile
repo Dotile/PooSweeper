@@ -31,3 +31,8 @@ clean:
 	rm -f *.o
 	rm -f $(MAIN)
 	rm -f $(TEST)
+
+git: 
+	git add ./*.h ./*.cpp 
+	status
+

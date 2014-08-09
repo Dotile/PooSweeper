@@ -13,7 +13,7 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) {
   nodelay(stdscr, true);
     
   for (int i = 0; i < _poofield.size; ++i) {
-    for (int j = 0; j < _poofield.size; ++j) {
+    for (int j = 0; j < _poofield[i].size; ++j) {
       // printf command goes here
     }
   }
