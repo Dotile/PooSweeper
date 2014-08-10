@@ -72,8 +72,8 @@ CellInfo PooSweeperState::getCellInfo(size_t rowIndex, size_t colIndex) {
  if (_pooField[colIndex][rowIndex] == POO) {
    CellInfo = REVEALED_POO;
  } else {
-   for(int i, i < 3, ++i) {
-     for(int j, j < 3, ++j) {
+   for(int i = 0; i < 3; ++i) {
+     for(int j = 0; j < 3; ++j) {
        if(_pooField[rowIndex + i - 1][colIndex + j -1] == POO) {
          CellInfo++;
        }

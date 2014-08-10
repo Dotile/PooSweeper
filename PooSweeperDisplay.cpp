@@ -1,6 +1,8 @@
-// Copyright 2014, Dominik Leclerc
-
+// Copyright 2014, Dominik Leclerc 
 #include "./PooSweeperDisplay.h"
+#include "./PooSweeperDisplayBase.h"
+#include "./PooSweeperStateBase.h"
+#include "./PooSweeperState.h"
 #include <ncurses.h>
 #include <stdio.h>
 #include <vector>
@@ -12,59 +14,48 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) {
   curs_set(false);
   nodelay(stdscr, true);
 
-  for (int i = 0; i < _poofield.size; ++i) {
-    for (int j = 0; j < _poofield[i].size; ++j) {
-      switch (_poofield[i][j]) {
+  for (int i = 0; i < _pooField.size; ++i) {
+    for (int j = 0; j < _pooField[i].size; ++j) {
+      printf("\x1b[%d;%dH", i, j);
+      switch (_pooField[i][j]) {
         case UNREVEALED:
-          printf("\x1b[%d;%dH", i, j);
           printf("X");
-          fflush(stdout);
-          // show unrevealed cell
+          // show unrevealed cell (inverse cell)
           break;
-        case REVEALED:
-          // printf command goes here
+        case REVEALED_POO:
           // show revealed cell (idea:inverted unrevealed?)
           break;
         case REVEALED_POO:
-          // printf command goes here
-          // show poo
+          // show poo (find funny character) 
         case MARKED:
-          // printf command goes here
-          // show a mark
+          // show a mark (inverted X)
           break;
         case REVEALED_ONE:
-          // printf command goes here
-          // show a 1
+          // show a 1 (blue)
           break;
         case REVEALED_TWO:
-          // printf command goes here
-          // show a 2
+          // show a 2 (green)
           break;
         case REVEALED_THREE:
-          // printf command goes here
-          // show a 3
+          // show a 3 (red)
           break;
         case REVEALED_FOUR:
-          // printf command goes here
-          // show a 4
+          // show a 4 (darkblue/ purple)
           break;
         case REVEALED_FIVE:
-          // printf command goes here
-          // show a 5
+          // show a 5 (maroon / red)
           break;
         case REVEALED_SIX:
-          // printf command goes here
-          // show a 6
+          // show a 6 (cyan/blue)
           break;
         case REVEALED_SEVEN:
-          // printf command goes here
-          // show a 7
+          // show a 7 (black)
           break;
         case REVEALED_EIGHT:
-          // printf command goes here
-          // show a 8
+          // show a 8 (grey)
           break;
       }
     }
   }
+  fflush(stdout);
 }
