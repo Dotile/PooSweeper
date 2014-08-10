@@ -31,41 +31,54 @@ void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
 CellInfo PooSweeperState::getCellInfo(size_t rowIndex, size_t colIndex) {
  // Look for mines in sorrounding fields using if Statements
  int CellInfo = 0;
- // Center
- if(_pooField[rowIndex][colIndex] == POO) {
+ // // Center
+ // if(_pooField[rowIndex][colIndex] == POO) {
+ //   CellInfo = REVEALED_POO;
+ // }
+ // // Upper left
+ // if(_pooField[rowIndex - 1][colIndex - 1] == POO) {
+ //   CellInfo++;
+ // }
+ // // Upper middle
+ // if(_pooField[rowIndex - 1][colIndex] == POO) {
+ //   CellInfo++;
+ // }
+ // // Upper right
+ // if(_pooField[rowIndex - 1][colIndex + 1] == POO) {
+ //   CellInfo++;
+ // }
+ // // Center left
+ // if(_pooField[rowIndex][colIndex - 1] == POO) {
+ //   CellInfo++;
+ // }
+ // // Center right
+ // if(_pooField[rowIndex][colIndex + 1] == POO) {
+ //   CellInfo++;
+ // }
+ // // Lower left
+ // if(_pooField[rowIndex + 1][colIndex - 1] == POO) {
+ //   CellInfo++;
+ // }
+ // // Lower middle 
+ // if(_pooField[rowIndex + 1][colIndex] == POO) {
+ //   CellInfo++;
+ // }
+ // // Lower right 
+ // if(_pooField[rowIndex + 1][colIndex + 1] == POO) {
+ //   CellInfo++;
+ // }
+ // return CellInfo;
+ 
+ if (_pooField[colIndex][rowIndex] == POO) {
    CellInfo = REVEALED_POO;
- }
- // Upper left
- if(_pooField[rowIndex - 1][colIndex - 1] == POO) {
-   CellInfo++;
- }
- // Upper middle
- if(_pooField[rowIndex - 1][colIndex] == POO) {
-   CellInfo++;
- }
- // Upper right
- if(_pooField[rowIndex - 1][colIndex + 1] == POO) {
-   CellInfo++;
- }
- // Center left
- if(_pooField[rowIndex][colIndex - 1] == POO) {
-   CellInfo++;
- }
- // Center right
- if(_pooField[rowIndex][colIndex + 1] == POO) {
-   CellInfo++;
- }
- // Lower left
- if(_pooField[rowIndex + 1][colIndex - 1] == POO) {
-   CellInfo++;
- }
- // Lower middle 
- if(_pooField[rowIndex + 1][colIndex] == POO) {
-   CellInfo++;
- }
- // Lower right 
- if(_pooField[rowIndex + 1][colIndex + 1] == POO) {
-   CellInfo++;
+ } else {
+   for(int i, i < 3, ++i) {
+     for(int j, j < 3, ++j) {
+       if(_pooField[rowIndex + i - 1][colIndex + j -1] == POO) {
+         CellInfo++;
+       }
+     }
+   }
  }
  return CellInfo;
 }
