@@ -5,5 +5,6 @@
 #define PooSweeperMain main
 
 int PooSweeperMain() {
-  PooSweeper::play();
+  PooSweeper PooSweeper;
+  PooSweeper.play();
 }

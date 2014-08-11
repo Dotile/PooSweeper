@@ -7,6 +7,13 @@
 // _____________________________________________________________________________
 void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
 {
+  // Membervariables
+  size_t _numRows = numRows;
+  size_t _numCols = numCols;
+  size_t _numPoos = numPoos;
+
+
+
   // Create an vector the Size of numRows and numCols to store poos
   // Fill Gameboard vector with UNREVEALED Cells.
   _pooField.resize(numRows);
@@ -32,8 +39,8 @@ void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
 
 // _____________________________________________________________________________
 CellInfo PooSweeperState::getCellInfo(size_t rowIndex, size_t colIndex) {
-  CellInfo CellInfo;
-  CellInfo = _board[rowIndex][colIndex];
+  CellInfo cellInfo;
+  cellInfo = _board[rowIndex][colIndex];
   return CellInfo;
 }
 
@@ -47,7 +54,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
   }
   // If there is no bomb look for sourrounding mines and change CellInfo.
   if(_pooField[move.row][move.col] == NO_POO) {
-  CellInfo = O;
+  CellInfo cellInfo = 0;
     for (int i = 0; i < 3; ++i) {
       for (int j = 0; j < 3; ++j) {
         if (_pooField[move.row + i - 1][move.col + i -1] == POO) {
@@ -59,16 +66,16 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
 }
 
 // _____________________________________________________________________________
-move PooSweeperState::createMove() {
-  MEVENT me;  // Variable for info on mouse event.
-  mousemask(ALL_MOUSE_EVENTS, NULL);  // React to all events.
-  keypad(stdscr, TRUE);  // Single keycode, not sequence of keycodes.
-  int ch = getch();  // Get keycode
-  if (getmouse(&me) == OK) {  // Some mouse event happened.
-    // Left button clicked
-    if (me.bstate & BUTTON1_CLICKED) {
-      printf("Rechtsklick Position:" %d, %d\n, me.x, me.y);  // show position
-    } else if (me.bstate & BUTTON3_CLICKED) {  // Right button clicked
-      printf("Linksklick Position:" %d, %d\n, me.x, me.y);  // show position
-    }
+size_t numRows() {
+  return _numRows;
+}
+
+// _____________________________________________________________________________
+size_t numCols() {
+  return _numCols;
+}
+
+// _____________________________________________________________________________
+size_t numPoos() {
+  return _numPoos;
 }
