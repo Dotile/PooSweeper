@@ -12,8 +12,6 @@ void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
   size_t _numCols = numCols;
   size_t _numPoos = numPoos;
 
-
-
   // Create an vector the Size of numRows and numCols to store poos
   // Fill Gameboard vector with UNREVEALED Cells.
   _pooField.resize(numRows);
@@ -62,8 +60,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         }
       }
     }
-    _board[mowe.row][move.col] = cellInfo;
-    CellInfo(pooCounter);
+    _board[move.row][move.col] = CellInfo(cellInfo);
   }
 }
 
@@ -80,4 +77,14 @@ size_t PooSweeperState::numCols() const {
 // _____________________________________________________________________________
 size_t PooSweeperState::numPoos() const {
   return _numPoos;
+}
+
+// _____________________________________________________________________________
+size_t PooSweeperState::numRevealed() const {
+  return _numRevealed;
+}
+
+// _____________________________________________________________________________
+size_t PooSweeperState::numMarked() const {
+  return _numMarked;
 }
