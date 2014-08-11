@@ -43,6 +43,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
   if(_pooField[move.row][move.col] == POO) {
     _board[move.row][move.col] = REVEALED_POO;
     GameStatus = LOST;
+    return;
   }
   // If there is no bomb look for sourrounding mines and change CellInfo.
   if(_pooField[move.row][move.col] == NO_POO) {
