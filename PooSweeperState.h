@@ -36,10 +36,11 @@ class PooSweeperState : public PooSweeperStateBase {
   };
 
  private:
-  int _minex;
-  int _miney;
 
   std::vector<std::vector<poo>> _pooField;
+  std::vector<std::vector<CellInfo>> _board;
+  
+  move createMove(); 
 };
 
 #endif  // POOSWEEPERSTATE_H_

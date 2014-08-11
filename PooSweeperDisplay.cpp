@@ -14,10 +14,10 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) {
   curs_set(false);
   nodelay(stdscr, true);
 
-  for (int i = 0; i < _pooField.size; ++i) {
-    for (int j = 0; j < _pooField[i].size; ++j) {
+  for (int i = 0; i < numRows; ++i) {
+    for (int j = 0; j < numCols; ++j) {
       printf("\x1b[%d;%dH", i, j);
-      switch (_pooField[i][j]) {
+      switch (getCellInfo(numRows,numCols) {
         case UNREVEALED:
           printf("X");
           // show unrevealed cell (inverse cell)
