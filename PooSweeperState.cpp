@@ -8,23 +8,23 @@
 void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
 {
   // Membervariables
-  size_t _numRows = numRows;
-  size_t _numCols = numCols;
-  size_t _numPoos = numPoos;
+  _numRows = numRows;
+  _numCols = numCols;
+  _numPoos = numPoos;
 
   // Create an vector the Size of numRows and numCols to store poos
   // Fill Gameboard vector with UNREVEALED Cells.
-  _pooField.resize(numRows);
-  _board.resize(numRows);
-  for (int i = 0; i < numRows; ++i) {
-    for (int j = 0; j < numCols; ++j) {
+  _pooField.resize(_numRows);
+  _board.resize(_numRows);
+  for (int i = 0; i < _numRows; ++i) {
+    for (int j = 0; j < _numCols; ++j) {
       _pooField[i].push_back(NO_POO);
       _board[i].push_back(UNREVEALED);
     }
   }
 
   // Fill the vector randomly with Poos.
-  for (int i; i <= numPoos;) {
+  for (int i; i <= _numPoos;) {
     int _minex = random() % numRows;
     int _miney = random() % numCols;
     // If there is space put in the poo
@@ -36,10 +36,14 @@ void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
 }
 
 // _____________________________________________________________________________
-PooSweeperState::CellInfo PooSweeperState::getCellInfo(size_t rowIndex, size_t colIndex) {
-  CellInfo cellInfo;
-  cellInfo = _board[rowIndex][colIndex];
-  return CellInfo;
+PooSweeperStateBase::CellInfo PooSweeperState::getCellInfo(size_t rowIndex, size_t colIndex) const {
+  return _board[rowIndex][colIndex];
+}
+
+
+// _____________________________________________________________________________
+PooSweeperStateBase::GameStatus PooSweeperState::status() const {
+
 }
 
 // _____________________________________________________________________________
