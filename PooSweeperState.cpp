@@ -38,7 +38,7 @@ void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
 }
 
 // _____________________________________________________________________________
-CellInfo PooSweeperState::getCellInfo(size_t rowIndex, size_t colIndex) {
+PooSweeperState::CellInfo PooSweeperState::getCellInfo(size_t rowIndex, size_t colIndex) {
   CellInfo cellInfo;
   cellInfo = _board[rowIndex][colIndex];
   return CellInfo;
@@ -49,33 +49,35 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
   // check if a poo is in the clicked cell.
   if(_pooField[move.row][move.col] == POO) {
     _board[move.row][move.col] = REVEALED_POO;
-    GameStatus = LOST;
+    // set game status to lost GameStatus = LOST;
     return;
   }
   // If there is no bomb look for sourrounding mines and change CellInfo.
   if(_pooField[move.row][move.col] == NO_POO) {
-  CellInfo cellInfo = 0;
+  size_t cellInfo = 0;
     for (int i = 0; i < 3; ++i) {
       for (int j = 0; j < 3; ++j) {
         if (_pooField[move.row + i - 1][move.col + i -1] == POO) {
-          CellInfo++;
+          cellInfo++;
         }
       }
     }
+    _board[mowe.row][move.col] = cellInfo;
+    CellInfo(pooCounter);
   }
 }
 
 // _____________________________________________________________________________
-size_t numRows() {
+size_t PooSweeperState::numRows() const {
   return _numRows;
 }
 
 // _____________________________________________________________________________
-size_t numCols() {
+size_t PooSweeperState::numCols() const {
   return _numCols;
 }
 
 // _____________________________________________________________________________
-size_t numPoos() {
+size_t PooSweeperState::numPoos() const {
   return _numPoos;
 }

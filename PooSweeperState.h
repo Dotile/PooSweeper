@@ -36,6 +36,10 @@ class PooSweeperState : public PooSweeperStateBase {
   };
 
  private:
+  size_t _numRows;
+  size_t _numCols;
+  size_t _numPoos;
+
 
   std::vector<std::vector<poo>> _pooField;
   std::vector<std::vector<CellInfo>> _board;
