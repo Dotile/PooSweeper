@@ -1,12 +1,12 @@
 // Copyright 2014 Dominik Leclerc
 
-#include <vector>
-#include <ncurses.h>
 #include "./PooSweeperState.h"
+#include <ncurses.h>
+#include <vector>
 
 // _____________________________________________________________________________
-void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
-{
+void PooSweeperState::initialize
+(size_t numRows, size_t numCols, size_t numPoos) {
   // Membervariables
   _numRows = numRows;
   _numCols = numCols;
@@ -36,27 +36,27 @@ void PooSweeperState::initialize(size_t numRows, size_t numCols, size_t numPoos)
 }
 
 // _____________________________________________________________________________
-PooSweeperStateBase::CellInfo PooSweeperState::getCellInfo(size_t rowIndex, size_t colIndex) const {
+PooSweeperStateBase::CellInfo PooSweeperState::getCellInfo
+(size_t rowIndex, size_t colIndex) const {
   return _board[rowIndex][colIndex];
 }
 
 
 // _____________________________________________________________________________
 PooSweeperStateBase::GameStatus PooSweeperState::status() const {
-
 }
 
 // _____________________________________________________________________________
 void PooSweeperState::applyMove(const PooSweeperMove& move) {
   // check if a poo is in the clicked cell.
-  if(_pooField[move.row][move.col] == POO) {
+  if (_pooField[move.row][move.col] == POO) {
     _board[move.row][move.col] = REVEALED_POO;
     // set game status to lost GameStatus = LOST;
     return;
   }
   // If there is no bomb look for sourrounding mines and change CellInfo.
-  if(_pooField[move.row][move.col] == NO_POO) {
-  size_t cellInfo = 0;
+  if (_pooField[move.row][move.col] == NO_POO) {
+    size_t cellInfo = 0;
     for (int i = 0; i < 3; ++i) {
       for (int j = 0; j < 3; ++j) {
         if (_pooField[move.row + i - 1][move.col + i -1] == POO) {

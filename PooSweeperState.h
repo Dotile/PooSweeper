@@ -45,7 +45,6 @@ class PooSweeperState : public PooSweeperStateBase {
 
   std::vector<std::vector<poo>> _pooField;
   std::vector<std::vector<CellInfo>> _board;
-  
 };
 
 #endif  // POOSWEEPERSTATE_H_

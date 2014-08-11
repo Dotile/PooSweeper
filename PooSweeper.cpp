@@ -4,11 +4,11 @@
 
 // _____________________________________________________________________________
 void PooSweeper::play() {
-  while(true) {
+  while (true) {
   }
 }
 
-// // _____________________________________________________________________________
+// _____________________________________________________________________________
 // move PooSweeperState::createMove() {
 //   MEVENT me;  // Variable for info on mouse event.
 //   mousemask(ALL_MOUSE_EVENTS, NULL);  // React to all events.

@@ -1,11 +1,12 @@
-// Copyright 2014, Dominik Leclerc 
+// Copyright 2014, Dominik Leclerc
+
 #include "./PooSweeperDisplay.h"
-#include "./PooSweeperDisplayBase.h"
-#include "./PooSweeperStateBase.h"
-#include "./PooSweeperState.h"
 #include <ncurses.h>
 #include <stdio.h>
 #include <vector>
+#include "./PooSweeperDisplayBase.h"
+#include "./PooSweeperStateBase.h"
+#include "./PooSweeperState.h"
 
 void PooSweeperDisplay::show(const PooSweeperStateBase* state) {
   initscr();
@@ -17,7 +18,7 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) {
   for (int i = 0; i < numRows(); ++i) {
     for (int j = 0; j < numCols(); ++j) {
       printf("\x1b[%d;%dH", i, j);
-      switch (state->getCellInfo(numRows(),numCols())) {
+      switch (state->getCellInfo(numRows(), numCols())) {
         case UNREVEALED:
           printf("X");
           // show unrevealed cell (inverse cell)
@@ -26,7 +27,7 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) {
           // show revealed cell (idea:inverted unrevealed?)
           break;
         case REVEALED_POO:
-          // show poo (find funny character) 
+          // show poo (find funny character)
         case MARKED:
           // show a mark (inverted X)
           break;
