@@ -13,6 +13,7 @@ class PooSweeper {
  public:
   void play();
  private:
+  move createMove();
 };
 
 #endif  // POOSWEEPER_H_

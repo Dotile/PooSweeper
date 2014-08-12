@@ -25,10 +25,24 @@ void PooSweeper::play() {
 
   while (true) {
     DISPLAY->show(POO);
+
+    // Mouse Events
+    MEVENT me;  // Variable for info on mouse event.
+    mousemask(ALL_MOUSE_EVENTS, NULL);  // React to all events.
+    keypad(stdscr, TRUE);  //Single keycode, not sequence of keycodes.
+    int ch = getch();  // Get keycode.
+    if (getmouse(&me) == OK) {  // Some mouse event happend.
+      // button clicked
+      if (me.bstate & BUTTON1_CLICKED) {
+        printf("Rechtsklick Position:" %d, %d\n, me.x, me.y);  // show position
+      }
+    }
+    // Mouse Events
+    POO->applyMove(me.x, ,e.y)
   }
 }
 
-// _____________________________________________________________________________
+// // _____________________________________________________________________________
 // move PooSweeperState::createMove() {
 //   MEVENT me;  // Variable for info on mouse event.
 //   mousemask(ALL_MOUSE_EVENTS, NULL);  // React to all events.

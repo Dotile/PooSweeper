@@ -37,14 +37,11 @@ void PooSweeperState::initialize
       i++;
     }
   }
-
   initscr();
   cbreak();
   noecho();
   curs_set(false);
   nodelay(stdscr, true);
-  
-
 }
 
 // _____________________________________________________________________________
