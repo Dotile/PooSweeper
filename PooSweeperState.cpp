@@ -37,22 +37,12 @@ void PooSweeperState::initialize
       i++;
     }
   }
-  initscr();
-  cbreak();
-  noecho();
-  curs_set(false);
-  nodelay(stdscr, true);
 }
 
 // _____________________________________________________________________________
 PooSweeperStateBase::CellInfo PooSweeperState::getCellInfo
 (size_t rowIndex, size_t colIndex) const {
   return _board[rowIndex][colIndex];
-}
-
-
-// _____________________________________________________________________________
-PooSweeperStateBase::GameStatus PooSweeperState::status() const {
 }
 
 // _____________________________________________________________________________
@@ -75,6 +65,10 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
     }
     _board[move.row][move.col] = CellInfo(cellInfo);
   }
+}
+
+// _____________________________________________________________________________
+PooSweeperStateBase::GameStatus PooSweeperState::status() const {
 }
 
 // _____________________________________________________________________________

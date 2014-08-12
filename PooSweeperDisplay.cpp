@@ -7,12 +7,17 @@
 #include "./PooSweeperStateBase.h"
 #include "./PooSweeperState.h"
 
+// _____________________________________________________________________________
+PooSweeperDisplay::PooSweeperDisplay() {
+  initscr();
+  cbreak();
+  noecho();
+  curs_set(false);
+  nodelay(stdscr, true);
+}
+
+// _____________________________________________________________________________
 void PooSweeperDisplay::show(const PooSweeperStateBase* state) {
-//   initscr();
-//   noecho();
-//   cbreak();
-//   curs_set(false);
-//   nodelay(stdscr, true);
   clear();
   for (int i = 0; i < state->numRows(); ++i) {
     for (int j = 0; j < state->numCols(); ++j) {
@@ -69,4 +74,9 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) {
     }
   }
   fflush(stdout);
+}
+
+// _____________________________________________________________________________
+PooSweeperDisplay::~PooSweeperDisplay() {
+  endwin();
 }

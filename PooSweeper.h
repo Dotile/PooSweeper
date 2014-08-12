@@ -11,9 +11,19 @@
 
 class PooSweeper {
  public:
+  // Constructor
+  PooSweeper();
+
+  // Play Method.
   void play();
+
+  // Destructor
+  ~PooSweeper();
+
  private:
-  move createMove();
+  int _numRows;
+  int _numCols;
+  int _numPoos;
 };
 
 #endif  // POOSWEEPER_H_
