@@ -7,6 +7,7 @@
 
 #include <vector>
 #include "./PooSweeperMove.h"
+#include "./PooSweeperStateBase.h"
 
 class PooSweeperStateBase;
 extern PooSweeperStateBase* POO;

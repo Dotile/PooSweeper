@@ -38,8 +38,13 @@ void PooSweeper::play() {
       // button clicked
       if (me.bstate & BUTTON1_CLICKED) {
       PooSweeperMove move;
-      move.col = me.x;
-      move.row = me.y;
+      
+      size_t _movex = me.x;
+      size_t _movey = me.y;
+
+      
+      move.col = _movex;
+      move.row = _movey;
       }
     }
     // Mouse Events
