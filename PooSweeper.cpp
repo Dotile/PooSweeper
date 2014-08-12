@@ -1,11 +1,9 @@
 // Copyright 2014 ; Dominik Leclerc
 
+#include <iostream>
 #include "./PooSweeper.h"
 #include "./PooSweeperStateBase.h"
 #include "./PooSweeperDisplayBase.h"
-
-#include <iostream>
-
 
 // _____________________________________________________________________________
 void PooSweeper::play() {

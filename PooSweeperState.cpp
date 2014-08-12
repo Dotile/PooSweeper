@@ -5,7 +5,7 @@
 #include <vector>
 
 PooSweeperState poo;
-PooSweeperStateBase* POO = &Poo;
+PooSweeperStateBase* POO = &poo;
 
 
 // _____________________________________________________________________________
