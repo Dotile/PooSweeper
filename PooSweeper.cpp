@@ -37,7 +37,7 @@ void PooSweeper::play() {
     if (getmouse(&me) == OK) {  // Some mouse event happend.
       // button clicked
       if (me.bstate & BUTTON1_CLICKED) {
-      Move move;
+      PooSweeperMove move;
       move.col = me.x;
       move.row = me.y;
       }
