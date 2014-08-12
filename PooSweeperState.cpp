@@ -68,10 +68,6 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
 }
 
 // _____________________________________________________________________________
-PooSweeperStateBase::GameStatus PooSweeperState::status() const {
-}
-
-// _____________________________________________________________________________
 size_t PooSweeperState::numRows() const {
   return _numRows;
 }

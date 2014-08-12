@@ -6,6 +6,7 @@
 #include <ncurses.h>
 
 #include "./PooSweeper.h"
+#include "./PooSweeperMove.h"
 #include "./PooSweeperStateBase.h"
 #include "./PooSweeperDisplayBase.h"
 
@@ -36,11 +37,13 @@ void PooSweeper::play() {
     if (getmouse(&me) == OK) {  // Some mouse event happend.
       // button clicked
       if (me.bstate & BUTTON1_CLICKED) {
-        printf("Rechtsklick Position:" %d, %d\n, me.x, me.y);  // position
+      Move move;
+      move.col = me.x;
+      move.row = me.y;
       }
     }
     // Mouse Events
-    POO->applyMove(me.x, me.y);
+    POO->applyMove(move);
   }
 }
 
