@@ -2,7 +2,7 @@
 
 #include "./PooSweeper.h"
 
-int PooSweeperMain() {
+int main() {
   PooSweeper PooSweeper;
   PooSweeper.play();
 }
