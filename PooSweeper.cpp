@@ -25,10 +25,8 @@ PooSweeper::PooSweeper() {
 // _____________________________________________________________________________
 void PooSweeper::play() {
   POO->initialize(_numRows, _numCols, _numPoos);
-
   while (true) {
     DISPLAY->show(POO);
-
     // Mouse Events
     MEVENT me;  // Variable for info on mouse event.
     mousemask(ALL_MOUSE_EVENTS, NULL);  // React to all events.

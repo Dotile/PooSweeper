@@ -7,6 +7,9 @@
 #include "./PooSweeperStateBase.h"
 #include "./PooSweeperState.h"
 
+PooSweeperDisplay display;
+PooSweeperDisplayBase* DISPLAY = &display;
+
 // _____________________________________________________________________________
 PooSweeperDisplay::PooSweeperDisplay() {
   initscr();
