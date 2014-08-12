@@ -1,9 +1,30 @@
 // Copyright 2014 ; Dominik Leclerc
 
 #include "./PooSweeper.h"
+#include <iostream>
+
+using namespace std;
 
 // _____________________________________________________________________________
 void PooSweeper::play() {
+  int _numRows;
+  int _numCols;
+  int _numPoos;
+
+
+  // Get boardgame simensions (in x and y) from user
+  cout << "Enter Boardsize value x:";
+  cin >> _numRows;
+  cout << "Enter Boardsize value y:";
+  cin >> _numCols;
+  // Get quantity of mines from user
+  cout << "Enter number of Mines:";
+  cin >> _numPoos;
+  
+  POO->initialize(_numRows, _numCols, _numPoos);
+  PooSweeperDisplay screen;
+  screen.show;
+  
   while (true) {
   }
 }
