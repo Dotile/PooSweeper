@@ -1,6 +1,11 @@
 // Copyright 2014 ; Dominik Leclerc
 
 #include "./PooSweeper.h"
+#include "./PooSweeperState.h"
+#include "./PooSweeperStateBase.h"
+#include "./PooSweeperDisplay.h"
+#include "./PooSweeperDisplayBase.h"
+
 #include <iostream>
 
 
