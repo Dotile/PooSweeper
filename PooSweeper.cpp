@@ -45,6 +45,7 @@ void PooSweeper::play() {
       
       move.col = _movex;
       move.row = _movey;
+      move.type = PooSweeperMove::REVEAL;
       }
     }
     // Mouse Events
