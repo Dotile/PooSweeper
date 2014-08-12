@@ -3,7 +3,6 @@
 #include "./PooSweeper.h"
 #include <iostream>
 
-using namespace std;
 
 // _____________________________________________________________________________
 void PooSweeper::play() {
@@ -13,18 +12,17 @@ void PooSweeper::play() {
 
 
   // Get boardgame simensions (in x and y) from user
-  cout << "Enter Boardsize value x:";
-  cin >> _numRows;
-  cout << "Enter Boardsize value y:";
-  cin >> _numCols;
+  std::cout << "Enter Boardsize value x:";
+  std::cin >> _numRows;
+  std::cout << "Enter Boardsize value y:";
+  std::cin >> _numCols;
   // Get quantity of mines from user
-  cout << "Enter number of Mines:";
-  cin >> _numPoos;
-  
+  std::cout << "Enter number of Mines:";
+  std::cin >> _numPoos;
+
   POO->initialize(_numRows, _numCols, _numPoos);
-  PooSweeperDisplay screen;
-  screen.show;
-  
+  DISPLAY->show(POO);
+
   while (true) {
   }
 }

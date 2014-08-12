@@ -2,8 +2,6 @@
 
 #include "./PooSweeper.h"
 
-#define PooSweeperMain main
-
 int PooSweeperMain() {
   PooSweeper PooSweeper;
   PooSweeper.play();
