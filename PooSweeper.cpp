@@ -39,17 +39,14 @@ void PooSweeper::play() {
       if (me.bstate & BUTTON1_CLICKED) {
       PooSweeperMove move;
       
-      size_t _movex = me.x;
-      size_t _movey = me.y;
-
-      
-      move.col = _movex;
-      move.row = _movey;
+      move.col = me.x;
+      move.row = me.y;
       move.type = PooSweeperMove::REVEAL;
+
+      POO->applyMove(move);
       }
     }
     // Mouse Events
-    POO->applyMove(move);
   }
 }
 
