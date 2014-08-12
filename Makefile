@@ -34,5 +34,5 @@ clean:
 
 git: 
 	git add ./*.h ./*.cpp 
-	status
+	git status
 
