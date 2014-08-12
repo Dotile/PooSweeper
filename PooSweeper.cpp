@@ -13,18 +13,18 @@ void PooSweeper::play() {
 
 
   // Get boardgame simensions (in x and y) from user
-  std::cout << "Enter Boardsize value x:";
+  std::cout << "Enter game field x-size:";
   std::cin >> _numRows;
-  std::cout << "Enter Boardsize value y:";
+  std::cout << "Enter game field y-size:";
   std::cin >> _numCols;
   // Get quantity of mines from user
-  std::cout << "Enter number of Mines:";
+  std::cout << "Enter number of shits:";
   std::cin >> _numPoos;
 
   POO->initialize(_numRows, _numCols, _numPoos);
-  DISPLAY->show(POO);
 
   while (true) {
+    DISPLAY->show(POO);
   }
 }
 

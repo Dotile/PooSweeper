@@ -8,14 +8,15 @@
 #include "./PooSweeperState.h"
 
 void PooSweeperDisplay::show(const PooSweeperStateBase* state) {
-  initscr();
-  cbreak();
-  noecho();
-  curs_set(false);
-  nodelay(stdscr, true);
+//  initscr();
+//  noecho();
+//  cbreak();
+//  curs_set(false);
+//  nodelay(stdscr, true);
 
   for (int i = 0; i < state->numRows(); ++i) {
     for (int j = 0; j < state->numCols(); ++j) {
+      clear();
       printf("\x1b[%d;%dH", i, j);
       switch (state->getCellInfo(i, j)) {
         case PooSweeperStateBase::UNREVEALED:
@@ -23,6 +24,7 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) {
           // show unrevealed cell (inverse cell)
           break;
         case PooSweeperStateBase::REVEALED_ZERO:
+          printf("X");
           // show revealed cell (idea:inverted unrevealed?)
           break;
         case PooSweeperStateBase::REVEALED_POO:
