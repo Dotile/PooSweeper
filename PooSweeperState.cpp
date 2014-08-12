@@ -4,6 +4,10 @@
 #include <ncurses.h>
 #include <vector>
 
+PooSweeperState poo;
+PooSweeperStateBase* POO = &Poo;
+
+
 // _____________________________________________________________________________
 void PooSweeperState::initialize
 (size_t numRows, size_t numCols, size_t numPoos) {
