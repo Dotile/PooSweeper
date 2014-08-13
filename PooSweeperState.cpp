@@ -71,6 +71,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         }
         _board[move.row][move.col] = CellInfo(cellInfo);
       }
+      break;
     
     // Case if the cell is Marked and not Clicked
     case PooSweeperMove::TOGGLE_MARK:
@@ -80,6 +81,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       } else {
         _board[move.row][move.col] = MARKED;
       }
+      break;
 
     // Case if both Keys are pressed.
 }
