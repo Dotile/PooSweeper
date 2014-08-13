@@ -31,27 +31,27 @@ void PooSweeper::play() {
   while (true) {
     DISPLAY->show(POO);
     // Mouse Events
-    MEVENT me;  // Variable for info on mouse event.
+    MEVENT inputMouse;  // Variable for info on mouse event.
     mousemask(ALL_MOUSE_EVENTS, NULL);  // React to all events.
     keypad(stdscr, TRUE);  // Single keycode, not sequence of keycodes.
     int ch = getch();  // Get keycode.
-    if (getmouse(&me) == OK) {  // Some mouse event happend.
+    if (getmouse(&inputMouse) == OK) {  // Some mouse event happend.
       // Left Click
-      if (me.bstate & BUTTON1_CLICKED) {
+      if (inputMouse.bstate & BUTTON1_CLICKED) {
         PooSweeperMove move;
 
-        move.col = me.x + 1;
-        move.row = me.y + 1;
+        move.col = inputMouse.x + 1;
+        move.row = inputMouse.y + 1;
         move.type = PooSweeperMove::REVEAL;
 
         POO->applyMove(move);
       }
       // Left  CTRL-Click
-      if (me.bstate & BUTTON1_CLICKED) {
+      if (inputMouse.bstate & BUTTON_CTRL) {
         PooSweeperMove move;
 
-        move.col = me.x + 1;
-        move.row = me.y + 1;
+        move.col = inputMouse.x + 1;
+        move.row = inputMouse.y + 1;
         move.type = PooSweeperMove::TOGGLE_MARK;
 
         POO->applyMove(move);

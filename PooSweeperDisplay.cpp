@@ -26,9 +26,7 @@ PooSweeperDisplay::PooSweeperDisplay() {
 
 // _____________________________________________________________________________
 void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
-  
   int _flags;
-  
   for (int i = 0; i < state->numRows(); ++i) {
     for (int j = 0; j < state->numCols(); ++j) {
       // Printf position Command
@@ -92,8 +90,7 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
   // after the Gameboard.
   printf("\x1b[%lu;%dH", state->numRows(), 0);
   std::cout << "Number of Poos:" << state->numPoos() << std::endl;
-  std::cout << "Number of Flags:" << _flags << std::endl; 
-
+  std::cout << "Number of Flags:" << _flags << std::endl;
 
   fflush(stdout);
 }
