@@ -33,6 +33,7 @@ clean:
 	rm -f $(TEST)
 
 git: 
-	git add ./*.h ./*.cpp 
+	git add . 
 	git status
+	git commit
 
