@@ -40,18 +40,18 @@ void PooSweeper::play() {
       if (me.bstate & BUTTON1_CLICKED) {
         PooSweeperMove move;
 
-        move.col = me.x;
-        move.row = me.y;
+        move.col = me.x + 1;
+        move.row = me.y + 1;
         move.type = PooSweeperMove::REVEAL;
 
         POO->applyMove(move);
       }
       // Left  CTRL-Click
-      if (me.bstate & BUTTON1_CLICKED & KEY_COMMAND) {
+      if (me.bstate & BUTTON1_CLICKED) {
         PooSweeperMove move;
 
-        move.col = me.x;
-        move.row = me.y;
+        move.col = me.x + 1;
+        move.row = me.y + 1;
         move.type = PooSweeperMove::TOGGLE_MARK;
 
         POO->applyMove(move);
