@@ -23,7 +23,6 @@ PooSweeperDisplay::PooSweeperDisplay() {
 
 // _____________________________________________________________________________
 void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
-  clear();
   for (int i = 0; i < state->numRows(); ++i) {
     for (int j = 0; j < state->numCols(); ++j) {
       printf("\x1b[%d;%dH", i, j);
