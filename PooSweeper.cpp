@@ -36,7 +36,7 @@ void PooSweeper::play() {
     keypad(stdscr, TRUE);  // Single keycode, not sequence of keycodes.
     int ch = getch();  // Get keycode.
     if (getmouse(&me) == OK) {  // Some mouse event happend.
-      // button clicked
+      // Left Click
       if (me.bstate & BUTTON1_CLICKED) {
         PooSweeperMove move;
 
@@ -46,8 +46,17 @@ void PooSweeper::play() {
 
         POO->applyMove(move);
       }
+      // Left  CTRL-Click
+      if (me.bstate & BUTTON1_CLICKED & KEY_COMMAND) {
+        PooSweeperMove move;
+
+        move.col = me.x;
+        move.row = me.y;
+        move.type = PooSweeperMove::TOGGLE_MARK;
+
+        POO->applyMove(move);
+      }
     }
-    // Mouse Events
   }
 }
 

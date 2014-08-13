@@ -1,7 +1,6 @@
 // Copyright 2014 Dominik Leclerc
 
 #include "./PooSweeperState.h"
-#include "./PooSweeperMove.h"
 
 #include <ncurses.h>
 #include <vector>
@@ -50,7 +49,6 @@ PooSweeperStateBase::CellInfo PooSweeperState::getCellInfo
 // _____________________________________________________________________________
 void PooSweeperState::applyMove(const PooSweeperMove& move) {
   switch (move.type) {
-    
     // Case if the cell is Clicked and not Marked
     case PooSweeperMove::REVEAL:
       // check if a poo is in the clicked cell.
@@ -72,7 +70,6 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         _board[move.row][move.col] = CellInfo(cellInfo);
       }
       break;
-    
     // Case if the cell is Marked and not Clicked
     case PooSweeperMove::TOGGLE_MARK:
       // if the cell is Marked then remove the mark and set another cell info.
@@ -82,9 +79,8 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         _board[move.row][move.col] = MARKED;
       }
       break;
-
-    // Case if both Keys are pressed.
-}
+    // TODO(Dotile): Case if both Keys are pressed.
+  }
 }
 
 // _____________________________________________________________________________
