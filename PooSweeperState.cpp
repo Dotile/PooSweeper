@@ -76,7 +76,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
     // Case if the cell is Marked and not Clicked
     case PooSweeperMove::TOGGLE_MARK:
       // if the cell is Marked then remove the mark and set another cell info.
-      if (_board[move.row][move.col] == PooSweeperMove::TOGGLE_MARK) {
+      if (_board[move.row][move.col] == PooSweeperStateBase::MARKED) {
         _board[move.row][move.col] = UNREVEALED;
       } else {
         _board[move.row][move.col] = MARKED;
