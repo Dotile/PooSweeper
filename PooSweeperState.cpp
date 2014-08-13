@@ -1,6 +1,7 @@
 // Copyright 2014 Dominik Leclerc
 
 #include "./PooSweeperState.h"
+#include "./PooSweeperMove.h"
 
 #include <ncurses.h>
 #include <vector>
@@ -48,24 +49,40 @@ PooSweeperStateBase::CellInfo PooSweeperState::getCellInfo
 
 // _____________________________________________________________________________
 void PooSweeperState::applyMove(const PooSweeperMove& move) {
-  // check if a poo is in the clicked cell.
-  if (_pooField[move.row][move.col] == POO) {
-    _board[move.row][move.col] = REVEALED_POO;
-    // set game status to lost GameStatus = LOST;
-    return;
-  }
-  // If there is no bomb look for sourrounding mines and change CellInfo.
-  if (_pooField[move.row][move.col] == NO_POO) {
-    size_t cellInfo = 0;
-    for (int i = 0; i < 3; ++i) {
-      for (int j = 0; j < 3; ++j) {
-        if (_pooField[move.row + i - 1][move.col + i -1] == POO) {
-          cellInfo++;
-        }
+  switch (move.type) {
+    
+    // Case if the cell is Clicked and not Marked
+    case PooSweeperMove::REVEAL:
+      // check if a poo is in the clicked cell.
+      if (_pooField[move.row][move.col] == POO) {
+        _board[move.row][move.col] = REVEALED_POO;
+        // set game status to lost GameStatus = LOST;
+        return;
       }
-    }
-    _board[move.row][move.col] = CellInfo(cellInfo);
-  }
+      // If there is no bomb look for sourrounding mines and change CellInfo.
+      if (_pooField[move.row][move.col] == NO_POO) {
+        size_t cellInfo = 0;
+        for (int i = 0; i < 3; ++i) {
+          for (int j = 0; j < 3; ++j) {
+            if (_pooField[move.row + i - 1][move.col + i -1] == POO) {
+              cellInfo++;
+            }
+          }
+        }
+        _board[move.row][move.col] = CellInfo(cellInfo);
+      }
+    
+    // Case if the cell is Marked and not Clicked
+    case PooSweeperMove::TOGGLE_MARK:
+      // if the cell is Marked then remove the mark and set another cell info.
+      if (_board[move.row][move.col] == TOGGLE_MARK) {
+        _board[move.row][move.col] = UNREVEALED;
+      } else {
+        _board[move.row][move.col] = TOGGLE_MARK;
+      }
+
+    // Case if both Keys are pressed.
+}
 }
 
 // _____________________________________________________________________________

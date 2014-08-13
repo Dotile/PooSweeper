@@ -4,6 +4,9 @@
 
 #include <ncurses.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+
 
 #include "./PooSweeperDisplayBase.h"
 #include "./PooSweeperStateBase.h"
@@ -25,14 +28,17 @@ PooSweeperDisplay::PooSweeperDisplay() {
 void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
   for (int i = 0; i < state->numRows(); ++i) {
     for (int j = 0; j < state->numCols(); ++j) {
+      // Printf position Command
       printf("\x1b[%d;%dH", i, j);
       switch (state->getCellInfo(i, j)) {
         case PooSweeperStateBase::UNREVEALED:
-          printf("U");
+          // printf("\x1b[7m");
           // show unrevealed cell (inverse cell)
+          printf("0");
           break;
         case PooSweeperStateBase::REVEALED_ZERO:
-          printf("R");
+          // printf("\x1b[0m");
+          printf("U");
           // show revealed cell (idea:inverted unrevealed?)
           break;
         case PooSweeperStateBase::REVEALED_POO:
@@ -77,6 +83,9 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
       }
     }
   }
+  // Print left mines and flags and such here.
+  // printf position Command needs to be revresed, otherwise is is printed
+  // after the Gameboard.
   fflush(stdout);
 }
 

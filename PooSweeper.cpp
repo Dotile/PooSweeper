@@ -15,11 +15,14 @@ PooSweeper::PooSweeper() {
   // Get boardgame simensions (in x and y) from user
   std::cout << "Enter game field x-size:";
   std::cin >> _numRows;
+  std::cout << std::endl;
   std::cout << "Enter game field y-size:";
   std::cin >> _numCols;
+  std::cout << std::endl;
   // Get quantity of mines from user
   std::cout << "Enter number of shits:";
   std::cin >> _numPoos;
+  std::cout << std::endl;
 }
 
 // _____________________________________________________________________________
