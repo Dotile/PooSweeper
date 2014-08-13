@@ -73,11 +73,16 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       break;
     // Case if the cell is Marked and not Clicked
     case PooSweeperMove::TOGGLE_MARK:
+      // if there is an unrevealed mine already there do nothing
+      // TODO(Dotile): Do this for every CellInfo
+      if (_board[move.row][move.col] == PooSweeperStateBase::UNREVEALED) {
+        break;
+      }
       // if the cell is Marked then remove the mark and set another cell info.
       if (_board[move.row][move.col] == PooSweeperStateBase::MARKED) {
         _board[move.row][move.col] = UNREVEALED;
         _numMarked--;
-      } else if (_board[move.row][move.col] == PooSweeperStateBase::UNREVEALED){
+      } else {
         _board[move.row][move.col] = MARKED;
         _numMarked++;
       }
