@@ -6,7 +6,6 @@
 #include <stdio.h>
 
 #include "./PooSweeperDisplayBase.h"
-#include "./PooSweeperDisplay.h"
 #include "./PooSweeperStateBase.h"
 #include "./PooSweeperState.h"
 
@@ -23,7 +22,7 @@ PooSweeperDisplay::PooSweeperDisplay() {
 }
 
 // _____________________________________________________________________________
-void PooSweeperDisplay::show(const PooSweeperStateBase* state) {
+void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
   clear();
   for (int i = 0; i < state->numRows(); ++i) {
     for (int j = 0; j < state->numCols(); ++j) {
