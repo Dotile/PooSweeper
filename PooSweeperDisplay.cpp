@@ -1,7 +1,10 @@
 // Copyright 2014, Dominik Leclerc
 
+#include "./PooSweeperDisplay.h"
+
 #include <ncurses.h>
 #include <stdio.h>
+
 #include "./PooSweeperDisplayBase.h"
 #include "./PooSweeperDisplay.h"
 #include "./PooSweeperStateBase.h"

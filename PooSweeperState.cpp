@@ -1,6 +1,7 @@
 // Copyright 2014 Dominik Leclerc
 
 #include "./PooSweeperState.h"
+
 #include <ncurses.h>
 #include <vector>
 
@@ -69,7 +70,6 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
 
 // _____________________________________________________________________________
 PooSweeperState::GameStatus PooSweeperState::status() const {
-
 }
 
 // _____________________________________________________________________________

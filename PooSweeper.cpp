@@ -1,11 +1,11 @@
 // Copyright 2014 ; Dominik Leclerc
 
-#include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
-#include <ncurses.h>
-
 #include "./PooSweeper.h"
+
+#include <stdlib.h>
+#include <ncurses.h>
+#include <iostream>
+
 #include "./PooSweeperMove.h"
 #include "./PooSweeperStateBase.h"
 #include "./PooSweeperDisplayBase.h"
@@ -30,18 +30,18 @@ void PooSweeper::play() {
     // Mouse Events
     MEVENT me;  // Variable for info on mouse event.
     mousemask(ALL_MOUSE_EVENTS, NULL);  // React to all events.
-    keypad(stdscr, TRUE);  //Single keycode, not sequence of keycodes.
+    keypad(stdscr, TRUE);  // Single keycode, not sequence of keycodes.
     int ch = getch();  // Get keycode.
     if (getmouse(&me) == OK) {  // Some mouse event happend.
       // button clicked
       if (me.bstate & BUTTON1_CLICKED) {
-      PooSweeperMove move;
-      
-      move.col = me.x;
-      move.row = me.y;
-      move.type = PooSweeperMove::REVEAL;
+        PooSweeperMove move;
 
-      POO->applyMove(move);
+        move.col = me.x;
+        move.row = me.y;
+        move.type = PooSweeperMove::REVEAL;
+
+        POO->applyMove(move);
       }
     }
     // Mouse Events
