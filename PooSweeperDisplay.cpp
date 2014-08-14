@@ -86,7 +86,7 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
   // Print left mines and flags and such here.
   // printf position Command needs to be revresed, otherwise is is printed
   // after the Gameboard.
-  printf("\x1b[%lu;%dH", state->numRows(), 0);
+  printf("\x1b[%u;%dH", state->numRows(), 0);
   std::cout << "Number of Poos:" << state->numPoos();
   std::cout << std::endl;
   std::cout << "Number of Flags:" << state->numMarked();
