@@ -17,6 +17,8 @@ void PooSweeperState::initialize
   _numCols = numCols;
   _numPoos = numPoos;
   _numMarked = 0;
+  _numRevealed = 0;
+  _gameStatus = ONGOING;
 
   // Create an vector the Size of numRows and numCols to store poos
   // Fill Gameboard vector with UNREVEALED Cells.
@@ -55,7 +57,8 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       // check if a poo is in the clicked cell.
       if (_pooField[move.row][move.col] == POO) {
         _board[move.row][move.col] = REVEALED_POO;
-        // set game status to lost GameStatus = LOST;
+        // set Gamestatus to LOST;
+        _gameStatus = LOST;
         return;
       }
       // If there is no bomb look for sourrounding mines and change CellInfo.
@@ -69,15 +72,12 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
           }
         }
         _board[move.row][move.col] = CellInfo(cellInfo);
+        _numRevealed++;
+        _gameStatus = ONGOING;
       }
       break;
     // Case if the cell is Marked and not Clicked
     case PooSweeperMove::TOGGLE_MARK:
-      // if there is an unrevealed mine already there do nothing
-      // TODO(Dotile): Do this for every CellInfo
-      if (_board[move.row][move.col] == PooSweeperStateBase::UNREVEALED) {
-        break;
-      }
       // if the cell is Marked then remove the mark and set another cell info.
       if (_board[move.row][move.col] == PooSweeperStateBase::MARKED) {
         _board[move.row][move.col] = UNREVEALED;
@@ -86,6 +86,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         _board[move.row][move.col] = MARKED;
         _numMarked++;
       }
+      _gameStatus = ONGOING;
       break;
     // TODO(Dotile): Case if both Keys are pressed.
   }
@@ -93,6 +94,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
 
 // _____________________________________________________________________________
 PooSweeperState::GameStatus PooSweeperState::status() const {
+  return _gameStatus;
 }
 
 // _____________________________________________________________________________

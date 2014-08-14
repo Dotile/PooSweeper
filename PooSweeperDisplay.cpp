@@ -90,6 +90,8 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
   std::cout << "Number of Poos:" << state->numPoos();
   std::cout << std::endl;
   std::cout << "Number of Flags:" << state->numMarked();
+  std::cout << std::endl;
+  std::cout << "Number of Revealed:" << state->numRevealed();
 
   fflush(stdout);
 }
