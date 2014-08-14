@@ -24,7 +24,7 @@ PooSweeper::PooSweeper() {
 // _____________________________________________________________________________
 void PooSweeper::play() {
   POO->initialize(_numRows, _numCols, _numPoos);
-  while (POO->GameStatus() == PooSweeperStateBase::ONGOING) {
+  while (POO->status() == PooSweeperStateBase::ONGOING) {
     DISPLAY->show(POO);
     // Mouse Events
     MEVENT inputMouse;  // Variable for info on mouse event.
@@ -54,7 +54,7 @@ void PooSweeper::play() {
       }
     }
   }
-  if (POO->GameStatus() == PooSweeperStateBase::LOST) {
+  if (POO->status() == PooSweeperStateBase::LOST) {
     return;
   }
 }
