@@ -64,16 +64,70 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       // If there is no bomb look for sourrounding mines and change CellInfo.
       if (_pooField[move.row][move.col] == NO_POO) {
         size_t cellInfo = 0;
-        for (int i = 0; i < 3; ++i) {
-          for (int j = 0; j < 3; ++j) {
-            if (_pooField[move.row + i - 1][move.col + i -1] == POO) {
-              cellInfo++;
+        // if/else in case the move is at the edge.
+        if (_numRows == move.row || _numCols == move.col) {
+          // Check these neighboring cells.
+          // [][][]
+          // []**[]
+          if (_numRows == move.row) {
+            for (int i = 0; i < 3; ++i) {
+              for (int j = 0; i < 2; ++i) {
+                if (_pooField[move.row + i - 1][move.col + j -1] == POO) {
+                  cellInfo++;
+                }
+              }
+            }
+            _board[move.row][move.col] = CellInfo(cellInfo);
+            _numRevealed++;
+            _gameStatus = ONGOING;
+          }
+          // Check these neighboring cells.
+          // [][]
+          // []**
+          // [][]
+          if (_numCols == move.col) {
+            for (int i = 0; i < 2; ++i) {
+              for (int j = 0; i < 3; ++i) {
+                if (_pooField[move.row + i - 1][move.col + j -1] == POO) {
+                  cellInfo++;
+                }
+              }
+            }
+            _board[move.row][move.col] = CellInfo(cellInfo);
+            _numRevealed++;
+            _gameStatus = ONGOING;
+          }
+          // Check these neighboring cells.
+          // [][]
+          // []**
+          if (_numCols == move.col && _numRows == move.row) {
+            for (int i = 0; i < 2; ++i) {
+              for (int j = 0; i < 2; ++i) {
+                if (_pooField[move.row + i - 1][move.col + j -1] == POO) {
+                  cellInfo++;
+                }
+              }
+            }
+            _board[move.row][move.col] = CellInfo(cellInfo);
+            _numRevealed++;
+            _gameStatus = ONGOING;
+          }
+        } else {
+          // Check these neighboring cells.
+          // [][][]
+          // []**[]
+          // [][][]
+          for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 3; ++j) {
+              if (_pooField[move.row + i - 1][move.col + i -1] == POO) {
+                cellInfo++;
+              }
             }
           }
+          _board[move.row][move.col] = CellInfo(cellInfo);
+          _numRevealed++;
+          _gameStatus = ONGOING;
         }
-        _board[move.row][move.col] = CellInfo(cellInfo);
-        _numRevealed++;
-        _gameStatus = ONGOING;
       }
       break;
     // Case if the cell is Marked and not Clicked
