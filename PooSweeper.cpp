@@ -6,10 +6,6 @@
 #include <ncurses.h>
 #include <iostream>
 
-#include "./PooSweeperMove.h"
-#include "./PooSweeperStateBase.h"
-#include "./PooSweeperDisplayBase.h"
-
 // _____________________________________________________________________________
 PooSweeper::PooSweeper() {
   // Get boardgame simensions (in x and y) from user
@@ -28,7 +24,7 @@ PooSweeper::PooSweeper() {
 // _____________________________________________________________________________
 void PooSweeper::play() {
   POO->initialize(_numRows, _numCols, _numPoos);
-  while (true) {
+  while (POO->GameStatus() == PooSweeperStateBase::ONGOING) {
     DISPLAY->show(POO);
     // Mouse Events
     MEVENT inputMouse;  // Variable for info on mouse event.
@@ -57,6 +53,9 @@ void PooSweeper::play() {
         POO->applyMove(move);
       }
     }
+  }
+  if (POO->GameStatus() == PooSweeperStateBase::LOST) {
+    return;
   }
 }
 

@@ -4,6 +4,7 @@
 #include "./PooSweeperStateBase.h"
 #include "./PooSweeperDisplay.h"
 #include "./PooSweeperDisplayBase.h"
+#include "./PooSweeperMove.h"
 
 #ifndef POOSWEEPER_H_
 #define POOSWEEPER_H_
