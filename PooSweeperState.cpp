@@ -32,7 +32,7 @@ void PooSweeperState::initialize
   }
 
   // Fill the vector randomly with Poos.
-  for (int i; i <= _numPoos;) {
+  for (int i = 0; i <= _numPoos;) {
     int _minex = random() % numRows;
     int _miney = random() % numCols;
     // If there is space put in the poo
