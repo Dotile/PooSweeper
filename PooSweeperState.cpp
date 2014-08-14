@@ -85,7 +85,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
           // [][]
           // []**
           // [][]
-          if (_numCols == move.col) {
+          else if (_numCols == move.col) {
             for (int i = 0; i < 2; ++i) {
               for (int j = 0; i < 3; ++i) {
                 if (_pooField[move.row + i - 1][move.col + j -1] == POO) {
@@ -100,7 +100,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
           // Check these neighboring cells.
           // [][]
           // []**
-          if (_numCols == move.col && _numRows == move.row) {
+          else if (_numCols == move.col && _numRows == move.row) {
             for (int i = 0; i < 2; ++i) {
               for (int j = 0; i < 2; ++i) {
                 if (_pooField[move.row + i - 1][move.col + j -1] == POO) {
