@@ -15,6 +15,7 @@ PooSweeper::PooSweeper() {
   std::cout << "Enter game field y-size:"<< std::endl;
   std::cin >> _numCols;
   std::cout << std::endl;
+
   // Get quantity of mines from user
   std::cout << "Enter number of shits:"<< std::endl;
   std::cin >> _numPoos;

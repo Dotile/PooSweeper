@@ -26,8 +26,8 @@ PooSweeperDisplay::PooSweeperDisplay() {
 
 // _____________________________________________________________________________
 void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
-  for (int i = 0; i < state->numRows(); ++i) {
-    for (int j = 0; j < state->numCols(); ++j) {
+  for (int i = 0; i <= state->numRows(); ++i) {
+    for (int j = 0; j <= state->numCols(); ++j) {
       // Printf position Command
       printf("\x1b[%d;%dH", i, j);
       switch (state->getCellInfo(i, j)) {

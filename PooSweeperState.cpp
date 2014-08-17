@@ -22,10 +22,10 @@ void PooSweeperState::initialize
 
   // Create an vector the Size of numRows and numCols to store poos
   // Fill Gameboard vector with UNREVEALED Cells.
-  _pooField.resize(_numRows);
-  _board.resize(_numRows);
-  for (int i = 0; i < _numRows; ++i) {
-    for (int j = 0; j < _numCols; ++j) {
+  _pooField.resize(_numRows + 1);
+  _board.resize(_numRows + 1);
+  for (int i = 0; i <= _numRows; ++i) {
+    for (int j = 0; j <= _numCols; ++j) {
       _pooField[i].push_back(NO_POO);
       _board[i].push_back(UNREVEALED);
     }
