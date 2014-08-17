@@ -1,5 +1,5 @@
 // Copyright 2014
-// Dominik Leclerc 
+// Dominik Leclerc
 
 #include <gtest/gtest.h>
 #include "./PooSweeperState.h"

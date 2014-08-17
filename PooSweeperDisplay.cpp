@@ -29,7 +29,7 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
   for (int i = 0; i < state->numRows(); ++i) {
     for (int j = 0; j < state->numCols(); ++j) {
       // Printf position Command
-      printf("\x1b[%d;%dH", i, j);
+      printf("\x1b[%d;%dH", i + 1, j + 1);
       switch (state->getCellInfo(i, j)) {
         case PooSweeperStateBase::UNREVEALED:
           // printf("\x1b[7m");
@@ -83,7 +83,7 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
       }
     }
   }
-  // Check if the game is lost or won and display that info.
+  // Check if the game is lost or won and display that info under gameboard.
   switch (POO->status()) {
     // Case if the Game is ONGOING
     case PooSweeperStateBase::ONGOING:

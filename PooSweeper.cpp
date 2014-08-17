@@ -37,8 +37,8 @@ void PooSweeper::play() {
       if (inputMouse.bstate & BUTTON1_CLICKED) {
         PooSweeperMove move;
 
-        move.col = inputMouse.x + 1;
-        move.row = inputMouse.y + 1;
+        move.col = inputMouse.x;
+        move.row = inputMouse.y;
         move.type = PooSweeperMove::REVEAL;
 
         POO->applyMove(move);
@@ -47,8 +47,8 @@ void PooSweeper::play() {
       if (inputMouse.bstate & BUTTON_CTRL) {
         PooSweeperMove move;
 
-        move.col = inputMouse.x + 1;
-        move.row = inputMouse.y + 1;
+        move.col = inputMouse.x;
+        move.row = inputMouse.y;
         move.type = PooSweeperMove::TOGGLE_MARK;
 
         POO->applyMove(move);
