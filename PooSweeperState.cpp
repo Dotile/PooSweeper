@@ -81,14 +81,16 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         // Autoreveal function
         if (cellInfo == 0) {
           for (int i = 0; i < 2; ++i) {
-            PooSweeperMove reveal;
+            for (int j = 0; j < 2; ++j) {
+              PooSweeperMove reveal;
       
-            reveal.row = move.row + i - 1;
-            reveal.col = move.col + i - 1;;
-            reveal.type = PooSweeperMove::REVEAL;
+              reveal.row = move.row + i - 1;
+              reveal.col = move.col + j - 1;;
+              reveal.type = PooSweeperMove::REVEAL;
       
-            applyMove(reveal);
-            }
+              applyMove(reveal);
+              }
+          }
         }
       }
 //      }
