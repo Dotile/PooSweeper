@@ -64,55 +64,6 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       // If there is no bomb look for sourrounding mines and change CellInfo.
       if (_pooField[move.row][move.col] == NO_POO) {
         size_t cellInfo = 0;
-//        // if/else in case the move is at the edge.
-//        if (_numRows == move.row || _numCols == move.col) {
-//          // Check these neighboring cells.
-//          // [][][]
-//          // []**[]
-//          if (_numRows == move.row) {
-//            for (int i = 0; i < 3; ++i) {
-//              for (int j = 0; i < 2; ++i) {
-//                if (_pooField[move.row + i - 1][move.col + j -1] == POO) {
-//                  cellInfo++;
-//                }
-//              }
-//            }
-//            _board[move.row][move.col] = CellInfo(cellInfo);
-//            _numRevealed++;
-//            _gameStatus = ONGOING;
-//          }
-//          // Check these neighboring cells.
-//          // [][]
-//          // []**
-//          // [][]
-//          else if (_numCols == move.col) {
-//            for (int i = 0; i < 2; ++i) {
-//              for (int j = 0; i < 3; ++i) {
-//                if (_pooField[move.row + i - 1][move.col + j -1] == POO) {
-//                  cellInfo++;
-//                }
-//              }
-//            }
-//            _board[move.row][move.col] = CellInfo(cellInfo);
-//            _numRevealed++;
-//            _gameStatus = ONGOING;
-//          }
-//          // Check these neighboring cells.
-//          // [][]
-//          // []**
-//          else if (_numCols == move.col && _numRows == move.row) {
-//            for (int i = 0; i < 2; ++i) {
-//              for (int j = 0; i < 2; ++i) {
-//                if (_pooField[move.row + i - 1][move.col + j -1] == POO) {
-//                  cellInfo++;
-//                }
-//              }
-//            }
-//            _board[move.row][move.col] = CellInfo(cellInfo);
-//            _numRevealed++;
-//            _gameStatus = ONGOING;
-//          }
-//        } else {
         // Check these neighboring cells.
         // [][][]
         // []**[]
@@ -127,8 +78,9 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         _board[move.row][move.col] = CellInfo(cellInfo);
         _numRevealed++;
         _gameStatus = ONGOING;
+        // Autoreveal function
         if (cellInfo == 0) {
-          for (int i = 0; i < 2; ++i) {  //  = 1 bc. move starts with one
+          for (int i = 0; i < 2; ++i) {
             PooSweeperMove reveal;
       
             reveal.row = move.row + i - 1;
@@ -138,6 +90,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
             applyMove(reveal);
             }
         }
+      }
 //      }
       break;
     // Case if the cell is Marked and not Clicked
@@ -157,11 +110,6 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       break;
     // TODO(Dotile): Case if both Keys are pressed.
   }
-//   // if the game is LOST oder WON then Reveal all cells.
-//   if (_gameStatus == LOST || _gameStatus == WON) {
-//     for (int i = 0; i <= _numRows; ++i) {
-//       for (int j = 0; j <= _numCols; ++j) {
-//         _board[i][j] =
 }
 
 // _____________________________________________________________________________
