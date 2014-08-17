@@ -4,6 +4,8 @@
 #define POOSWEEPERSTATE_H_
 
 #include <vector>
+#include <gtest/gtest.h>
+
 #include "./PooSweeperMove.h"
 #include "./PooSweeperStateBase.h"
 
@@ -17,6 +19,7 @@ class PooSweeperState : public PooSweeperStateBase {
 
   // Initialize (randomly).
   void initialize(size_t numRows, size_t numCols, size_t numPoos);
+  FRIEND_TEST(StateTest, initialize);
 
   // Apply move.
   void applyMove(const PooSweeperMove& move);
