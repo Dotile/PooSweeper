@@ -83,16 +83,30 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
       }
     }
   }
-  // Print left mines and flags and such here.
-  // printf position Command needs to be revresed, otherwise is is printed
-  // after the Gameboard.
-  printf("\x1b[%u;%dH", state->numRows(), 0);
-  std::cout << "Number of Poos:" << state->numPoos();
-  std::cout << std::endl;
-  std::cout << "Number of Flags:" << state->numMarked();
-  std::cout << std::endl;
-  std::cout << "Number of Revealed:" << state->numRevealed();
+  // Check if the game is lost or won and display that info.
+  switch (POO->status()) {
+    case PooSweeperStateBase::ONGOING:
+      // Print left mines and flags and such here.
+      printf("\x1b[%u;%dH", state->numRows(), 0);
+      std::cout << "#Poos:" << state->numPoos();
+      std::cout << "   ";
+      std::cout << "#Flags:" << state->numMarked();
+      std::cout << "   ";
+      std::cout << "#Revealed:" << state->numRevealed();
+      break;
 
+    // Case if the Game is LOST
+    case PooSweeperStateBase::LOST:
+      printf("\x1b[%u;%dH", state->numRows(), 0);
+      std::cout << "You lost the game." << std::endl;
+      break;
+
+    // Case if the Game is WON.
+    case PooSweeperStateBase::WON:
+      printf("\x1b[%u;%dH", state->numRows(), 0);
+      std::cout << "You won the game!" << std::endl;
+      break;
+  }
   fflush(stdout);
 }
 

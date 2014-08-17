@@ -55,6 +55,7 @@ void PooSweeper::play() {
     }
   }
   if (POO->status() == PooSweeperStateBase::LOST) {
+    DISPLAY->show(POO);
     return;
   }
 }

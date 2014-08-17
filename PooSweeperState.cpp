@@ -141,9 +141,17 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         _numMarked++;
       }
       _gameStatus = ONGOING;
+
+      // TODO(Dotile): Check if all bombs are marked and if so, win game.
+
       break;
     // TODO(Dotile): Case if both Keys are pressed.
   }
+//   // if the game is LOST oder WON then Reveal all cells.
+//   if (_gameStatus == LOST || _gameStatus == WON) {
+//     for (int i = 0; i <= _numRows; ++i) {
+//       for (int j = 0; j <= _numCols; ++j) {
+//         _board[i][j] =
 }
 
 // _____________________________________________________________________________
