@@ -117,8 +117,8 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
           // [][][]
           // []**[]
           // [][][]
-          for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 3; ++j) {
+          for (int i = 0; i < 2; ++i) {
+            for (int j = 0; j < 2; ++j) {
               if (_pooField[move.row + i - 1][move.col + i -1] == POO) {
                 cellInfo++;
               }
