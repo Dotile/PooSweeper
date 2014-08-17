@@ -87,7 +87,7 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
   switch (POO->status()) {
     case PooSweeperStateBase::ONGOING:
       // Print left mines and flags and such here.
-      printf("\x1b[%u;%dH", state->numRows(), 0);
+      printf("\x1b[%u;%dH", state->numRows() + 1 , 0);
       std::cout << "#Poos:" << state->numPoos();
       std::cout << "   ";
       std::cout << "#Flags:" << state->numMarked();
