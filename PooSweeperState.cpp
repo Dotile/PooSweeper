@@ -9,28 +9,26 @@ PooSweeperState poo;
 PooSweeperStateBase* POO = &poo;
 
 // _____________________________________________________________________________
-PooSweeperState::PooSweeperState() {
-  _numMarked = 0;
-  _numRevealed = 0;
-  _gameStatus = ONGOING;
-}
-
-// _____________________________________________________________________________
 void PooSweeperState::initialize
 (size_t numRows, size_t numCols, size_t numPoos) {
   // Membervariables
   _numRows = numRows;
   _numCols = numCols;
   _numPoos = numPoos;
+  _numMarked = 0;
+  _numRevealed = 0;
+  _gameStatus = ONGOING;
 
   // Create an vector the Size of numRows and numCols to store poos
   // Fill Gameboard vector with UNREVEALED Cells.
-  _pooField.resize(_numRows + 1);
-  _board.resize(_numRows + 1);
+  _pooField.resize(_numRows);
+  _board.resize(_numRows);
   for (int i = 0; i <= _numRows; ++i) {
+    _pooField[i].resize(_numCols);
+    _board[i].resize(_numCols);
     for (int j = 0; j <= _numCols; ++j) {
-      _pooField[i].push_back(NO_POO);
-      _board[i].push_back(UNREVEALED);
+      _pooField[i][j] = NO_POO;
+      _board[i][j] = UNREVEALED;
     }
   }
 
@@ -54,6 +52,9 @@ PooSweeperStateBase::CellInfo PooSweeperState::getCellInfo
 
 // _____________________________________________________________________________
 void PooSweeperState::applyMove(const PooSweeperMove& move) {
+  if (move.row > _numRows || move.row < 0) return;
+  if (move.col > _numCols || move.col < 0) return;
+
   switch (move.type) {
     // Case if the cell is Clicked and not Marked
     case PooSweeperMove::REVEAL:
@@ -73,6 +74,12 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         // [][][]
         for (int i = 0; i < 2; ++i) {
           for (int j = 0; j < 2; ++j) {
+            int row = move.row + i - 1;
+            int col = move.col + i - 1;
+
+            if (row >= _pooField.size() || row < 0) continue;
+            if (col >= _pooField[row].size() || col < 0) continue;
+
             if (_pooField[move.row + i - 1][move.col + i -1] == POO) {
               cellInfo++;
             }
