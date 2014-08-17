@@ -8,6 +8,12 @@
 PooSweeperState poo;
 PooSweeperStateBase* POO = &poo;
 
+// _____________________________________________________________________________
+PooSweeperState::PooSweeperState() {
+  _numMarked = 0;
+  _numRevealed = 0;
+  _gameStatus = ONGOING;
+}
 
 // _____________________________________________________________________________
 void PooSweeperState::initialize
@@ -16,9 +22,6 @@ void PooSweeperState::initialize
   _numRows = numRows;
   _numCols = numCols;
   _numPoos = numPoos;
-  _numMarked = 0;
-  _numRevealed = 0;
-  _gameStatus = ONGOING;
 
   // Create an vector the Size of numRows and numCols to store poos
   // Fill Gameboard vector with UNREVEALED Cells.
@@ -78,22 +81,21 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         _board[move.row][move.col] = CellInfo(cellInfo);
         _numRevealed++;
         _gameStatus = ONGOING;
-        // Autoreveal function
-        if (cellInfo == 0) {
-          for (int i = 0; i < 2; ++i) {
-            for (int j = 0; j < 2; ++j) {
-              PooSweeperMove reveal;
-      
-              reveal.row = move.row + i - 1;
-              reveal.col = move.col + j - 1;;
-              reveal.type = PooSweeperMove::REVEAL;
-      
-              applyMove(reveal);
-              }
-          }
-        }
+//        // Autoreveal function
+//        if (cellInfo == 0) {
+//          for (int i = 0; i < 2; ++i) {
+//            for (int j = 0; j < 2; ++j) {
+//              PooSweeperMove reveal;
+//
+//              reveal.row = move.row + i - 1;
+//              reveal.col = move.col + j - 1;;
+//              reveal.type = PooSweeperMove::REVEAL;
+//
+//              applyMove(reveal);
+//              }
+//          }
+//        }
       }
-//      }
       break;
     // Case if the cell is Marked and not Clicked
     case PooSweeperMove::TOGGLE_MARK:
@@ -110,7 +112,6 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       // TODO(Dotile): Check if all bombs are marked and if so, win game.
 
       break;
-    // TODO(Dotile): Case if both Keys are pressed.
   }
 }
 
