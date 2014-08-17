@@ -52,8 +52,8 @@ PooSweeperStateBase::CellInfo PooSweeperState::getCellInfo
 
 // _____________________________________________________________________________
 void PooSweeperState::applyMove(const PooSweeperMove& move) {
-  if (move.row > _numRows || move.row < 0) return;
-  if (move.col > _numCols || move.col < 0) return;
+  if (move.row >= _numRows || move.row < 0) return;
+  if (move.col >= _numCols || move.col < 0) return;
 
   switch (move.type) {
     // Case if the cell is Clicked and not Marked
