@@ -55,9 +55,20 @@ void PooSweeper::play() {
       }
     }
   }
-  if (POO->status() == PooSweeperStateBase::LOST) {
-    DISPLAY->show(POO);
-    return;
+  if (POO->status() == PooSweeperStateBase::LOST ||
+      POO->status() == PooSweeperStateBase::WON) {
+    for (int i = 1; i <= _numRows + 1; ++i) {  //  +1 bc. move starts with one
+      for (int j = 1; j <= _numCols + 1; ++j) {
+        PooSweeperMove move;
+
+        move.row = i;
+        move.col = j;
+        move.type = PooSweeperMove::REVEAL;
+
+        POO->applyMove(move);
+        DISPLAY->show(POO);
+      }
+    }
   }
 }
 
