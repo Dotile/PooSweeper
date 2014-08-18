@@ -116,7 +116,20 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       }
       _gameStatus = ONGOING;
 
-      // TODO(Dotile): Check if all bombs are marked and if so, win game.
+      // Check if all bombs are marked and if so, win game.
+      int markedPoos;
+      for (int i = 0; i < _numRows; ++i) {
+        for (int j = 0; j < _numCols; ++j) {
+          if (_pooField[i][j] == POO) {
+            if (_board[i][j] == PooSweeperStateBase::MARKED) {
+              markedPoos++;
+            }
+          }
+        }
+      }
+      if (markedPoos == _numPoos) {
+        _gameStatus = WON;
+      }
 
       break;
   }
