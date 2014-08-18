@@ -32,13 +32,15 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
       printf("\x1b[%d;%dH", i + 1, j + 1);
       switch (state->getCellInfo(i, j)) {
         case PooSweeperStateBase::UNREVEALED:
-          // printf("\x1b[7m");
+          printf("\x1b[7m");
+          printf(" ");
+          printf("\x1b[0m");
           // show unrevealed cell (inverse cell)
-          printf("U");
+          // printf("U");
           break;
         case PooSweeperStateBase::REVEALED_ZERO:
           // printf("\x1b[0m");
-          printf("0");
+          printf("0"); // TODO(@Dotile): change this now 0 for debugging.
           // show revealed cell (idea:inverted unrevealed?)
           break;
         case PooSweeperStateBase::REVEALED_POO:
@@ -46,7 +48,9 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
           printf("*");
         case PooSweeperStateBase::MARKED:
           // show a mark (inverted X)
-          printf("M");
+          printf("\x1b[7m");
+          printf("X");
+          printf("\x1b[0m");
           break;
         case PooSweeperStateBase::REVEALED_ONE:
           // show a 1 (blue)
@@ -99,7 +103,7 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
     // Case if the Game is LOST
     case PooSweeperStateBase::LOST:
       printf("\x1b[%lu;%dH", state->numRows() + 2, 0);  // lu bc. size_t numRows
-      std::cout << "You lost the game." << std::endl;
+      std::cout << "You lost the game. Press any key to quit." << std::endl;
       break;
 
     // Case if the Game is WON.
