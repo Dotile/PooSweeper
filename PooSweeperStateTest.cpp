@@ -8,7 +8,8 @@
 // ____________________________________________________________________________
 TEST(StateTest, initialize) {
   {
+  PooSweeperState state;
   POO->initialize(5,5,5);
-  ASSERT_EQ(PooSweeperStateBase::UNREVEALED, POO->_pooField[0][0]);
+  ASSERT_EQ(PooSweeperStateBase::UNREVEALED, state._pooField[0][0]);
   }
 }
