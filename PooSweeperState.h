@@ -3,8 +3,8 @@
 #ifndef POOSWEEPERSTATE_H_
 #define POOSWEEPERSTATE_H_
 
-#include <vector>
 #include <gtest/gtest.h>
+#include <vector>
 
 #include "./PooSweeperMove.h"
 #include "./PooSweeperStateBase.h"

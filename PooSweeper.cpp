@@ -67,6 +67,10 @@ void PooSweeper::play() {
 
         POO->applyMove(move);
         DISPLAY->show(POO);
+        int end = getch();
+        while(end != -1) {  // if there is a key pressed end the game
+          return;
+        }
       }
     }
   }
