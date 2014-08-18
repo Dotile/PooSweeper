@@ -67,7 +67,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       }
       // If there is no bomb look for sourrounding mines and change CellInfo.
       if (_pooField[move.row][move.col] == NO_POO) {
-        size_t cellInfo = 0;
+        int cellInfo = 0;
         // Check these neighboring cells.
         // [][][]
         // []**[]
@@ -80,7 +80,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
             if (row >= _pooField.size() || row < 0) continue;
             if (col >= _pooField[row].size() || col < 0) continue;
 
-            if (_pooField[row][col] == POO) {
+            if (_pooField[row][col] == Poo::POO) {
               cellInfo++;
             }
           }
@@ -130,7 +130,6 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       if (markedPoos == _numPoos) {
         _gameStatus = WON;
       }
-
       break;
   }
 }

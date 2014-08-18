@@ -34,7 +34,7 @@ class PooSweeperState : public PooSweeperStateBase {
   size_t numRevealed() const;
   size_t numMarked() const;
 
-  enum poo {
+  enum Poo {
     NO_POO = 0, POO = 1
   };
 
@@ -46,7 +46,7 @@ class PooSweeperState : public PooSweeperStateBase {
   size_t _numMarked;
   GameStatus _gameStatus;
 
-  std::vector<std::vector<poo>> _pooField;
+  std::vector<std::vector<Poo>> _pooField;
   std::vector<std::vector<CellInfo>> _board;
 };
 
