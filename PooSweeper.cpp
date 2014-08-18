@@ -57,8 +57,8 @@ void PooSweeper::play() {
   }
   if (POO->status() == PooSweeperStateBase::LOST ||
       POO->status() == PooSweeperStateBase::WON) {
-    for (int i = 1; i <= _numRows + 1; ++i) {  //  +1 bc. move starts with one
-      for (int j = 1; j <= _numCols + 1; ++j) {
+    for (int i = 0; i < _numRows; ++i) {
+      for (int j = 0; j < _numCols; ++j) {
         PooSweeperMove move;
 
         move.row = i;
@@ -67,12 +67,11 @@ void PooSweeper::play() {
 
         POO->applyMove(move);
         DISPLAY->show(POO);
-        int end = getch();
-        while(true) {  // if there is a key pressed end the game
-          int end = getch();
-          if (end != -1) break;
-        }
       }
+    }
+    while (true) {  // if there is a key pressed end the game
+      int end = getch();
+      if (end != -1) break;
     }
   }
 }
