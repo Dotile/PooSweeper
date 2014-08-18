@@ -19,7 +19,7 @@ class PooSweeperState : public PooSweeperStateBase {
 
   // Initialize (randomly).
   void initialize(size_t numRows, size_t numCols, size_t numPoos);
-  FRIEND_TEST(StateTest, initialize);
+  FRIEND_TEST(PooSweeperStateTest, initialize);
 
   // Apply move.
   void applyMove(const PooSweeperMove& move);
