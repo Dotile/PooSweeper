@@ -32,16 +32,15 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
       printf("\x1b[%d;%dH", i + 1, j + 1);
       switch (state->getCellInfo(i, j)) {
         case PooSweeperStateBase::UNREVEALED:
-          printf("\x1b[7m");
-          printf(" ");
-          printf("\x1b[0m");
           // show unrevealed cell (inverse cell)
-          // printf("U");
+          printf("\x1b[0m");
+          printf("\u25AF");
           break;
         case PooSweeperStateBase::REVEALED_ZERO:
-          // printf("\x1b[0m");
-          printf("0"); // TODO(@Dotile): change this now 0 for debugging.
           // show revealed cell (idea:inverted unrevealed?)
+          printf("\x1b[0m");
+          printf(" ");
+          // printf("0");
           break;
         case PooSweeperStateBase::REVEALED_POO:
           // show poo (find funny character)

@@ -75,7 +75,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         for (int i = 0; i < 2; ++i) {
           for (int j = 0; j < 2; ++j) {
             int row = move.row + i - 1;
-            int col = move.col + i - 1;
+            int col = move.col + j - 1;
 
             if (row >= _pooField.size() || row < 0) continue;
             if (col >= _pooField[row].size() || col < 0) continue;
