@@ -1,2 +1,2 @@
-// // Copyright 2014
-// // Dominik Leclerc
+// Copyright 2014
+// Dominik Leclerc
