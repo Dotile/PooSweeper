@@ -101,6 +101,8 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
               if (row >= _pooField.size() || row < 0) continue;
               if (col >= _pooField[row].size() || col < 0) continue;
 
+              
+
               reveal.row = row;
               reveal.col = col;
               reveal.type = PooSweeperMove::REVEAL;

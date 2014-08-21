@@ -18,7 +18,7 @@ test: compile
 checkstyle:
 	$(CHECKSTYLE) *.cpp *.h
 
-%Main: %Main.o $(OBJECTS)
+  %Main: %Main.o $(OBJECTS)
 	$(CXX) -o $@ $^ $(LIBS)
 
 %Test: %Test.o $(OBJECTS)
