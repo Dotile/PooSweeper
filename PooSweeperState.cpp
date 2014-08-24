@@ -88,29 +88,29 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         _board[move.row][move.col] = CellInfo(cellInfo);
         _numRevealed++;
         _gameStatus = ONGOING;
-//        // Autoreveal function
-//        if (cellInfo == 0) {
-//          for (int i = 0; i < 3; ++i) {
-//            for (int j = 0; j < 3; ++j) {
-//              
-//              PooSweeperMove reveal;
-//              
-//              int row = move.row + i - 1;
-//              int col = move.col + j - 1;
-//              
-//              if (row >= _pooField.size() || row < 0) continue;
-//              if (col >= _pooField[row].size() || col < 0) continue;
-//
-//              
-//
-//              reveal.row = row;
-//              reveal.col = col;
-//              reveal.type = PooSweeperMove::REVEAL;
-//
-//              applyMove(reveal);
-//              }
-//          }
-//        }
+        // Autoreveal function
+        if (cellInfo == 0) {
+          for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 3; ++j) {
+              
+              PooSweeperMove reveal;
+              
+              int row = move.row + i - 1;
+              int col = move.col + j - 1;
+              
+              if (row >= _pooField.size() || row < 0) continue;
+              if (col >= _pooField[row].size() || col < 0) continue;
+
+              
+
+              reveal.row = row;
+              reveal.col = col;
+              reveal.type = PooSweeperMove::REVEAL;
+
+              applyMove(reveal);
+              }
+          }
+        }
       }
       break;
     // Case if the cell is Marked and not Clicked

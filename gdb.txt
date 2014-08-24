@@ -1,0 +1,24 @@
+Starting program:  
+No executable file specified.
+Use the "file" or "exec-file" command.
+Starting program:  ./PooSweeperMain
+No executable file specified.
+Use the "file" or "exec-file" command.
+Reading symbols from ./PooSweeperMain...done.
+No symbol "i" in current context.
+No symbol "j" in current context.
+No symbol "move" in current context.
+Starting program: /home/student/Schreibtisch/Projekt/PooSweeper/PooSweeperMain 
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0804996f in PooSweeperState::applyMove (this=0x80512a0 <poo>, move=...) at PooSweeperState.cpp:62
+62	      if (_pooField[move.row][move.col] == POO) {
+Undefined command: "W6".  Try "help".
+No symbol "i" in current context.
+$1 = (const PooSweeperMove &) @0xbf800054: {row = 0, col = 3, type = PooSweeperMove::REVEAL}
+No symbol "col" in current context.
+A debugging session is active.
+
+	Inferior 1 [process 16207] will be killed.
+
+Quit anyway? (y or n) 
