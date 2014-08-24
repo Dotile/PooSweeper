@@ -98,8 +98,8 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
               int row = move.row + i - 1;
               int col = move.col + j - 1;
               
-              if (row >= _pooField.size() || row < 0) continue;
-              if (col >= _pooField[row].size() || col < 0) continue;
+              if (row >= _numRows || row < 0) continue;
+              if (col >= _numCols || col < 0) continue;
 
               
 
