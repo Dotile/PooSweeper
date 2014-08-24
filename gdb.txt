@@ -21,4 +21,28 @@ A debugging session is active.
 
 	Inferior 1 [process 16207] will be killed.
 
+Quit anyway? (y or n) Starting program: /home/student/Schreibtisch/Projekt/PooSweeper/PooSweeperMain 
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0804996f in PooSweeperState::applyMove (this=0x80512a0 <poo>, move=...) at PooSweeperState.cpp:62
+62	      if (_pooField[move.row][move.col] == POO) {
+$1 = 0
+$2 = 0
+$3 = 0
+$4 = 0
+No symbol "i" in current context.
+No symbol "j" in current context.
+No symbol "row" in current context.
+No symbol "col" in current context.
+No symbol "_poofield" in current context.
+No symbol "poofield" in current context.
+No symbol "_poofield" in current context.
+$5 = {<std::_Vector_base<std::vector<PooSweeperState::Poo, std::allocator<PooSweeperState::Poo> >, std::allocator<std::vector<PooSweeperState::Poo, std::allocator<PooSweeperState::Poo> > > >> = {
+    _M_impl = {<std::allocator<std::vector<PooSweeperState::Poo, std::allocator<PooSweeperState::Poo> > >> = {<__gnu_cxx::new_allocator<std::vector<PooSweeperState::Poo, std::allocator<PooSweeperState::Poo> > >> = {<No data fields>}, <No data fields>}, _M_start = 0x8072890, _M_finish = 0x8072908, 
+      _M_end_of_storage = 0x8072908}}, <No data fields>}
+Cannot access memory at address 0xbf7fff9f
+A debugging session is active.
+
+	Inferior 1 [process 17142] will be killed.
+
 Quit anyway? (y or n) 
