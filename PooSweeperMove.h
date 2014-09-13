@@ -19,7 +19,6 @@ class PooSweeperMove {
 
   // Type of move (reveal or toggle mine mark).
   enum { REVEAL, TOGGLE_MARK } type;
-  // enum { REVEAL = 0, TOGGLE_MARK = 1 } type2;
 };
 
 #endif  // POOSWEEPERMOVE_H_
