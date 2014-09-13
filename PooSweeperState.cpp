@@ -90,26 +90,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         _gameStatus = ONGOING;
         // Autoreveal function
         if (cellInfo == 0) {
-          for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 3; ++j) {
-              
-              PooSweeperMove reveal;
-              
-              int row = move.row + i - 1;
-              int col = move.col + j - 1;
-              
-              if (row >= _numRows || row < 0) continue;
-              if (col >= _numCols || col < 0) continue;
-
-              
-
-              reveal.row = row;
-              reveal.col = col;
-              reveal.type = PooSweeperMove::REVEAL;
-
-              applyMove(reveal);
-              }
-          }
+          autoreveal(move.row , move.col);
         }
       }
       break;
@@ -143,6 +124,30 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
   }
 }
 
+
+// _____________________________________________________________________________
+void PooSweeperState::autoreveal (size_t rowIndex, size_t colIndex) {
+  for (int i = 0; i < 3; ++i) {
+    for (int j = 0; j < 3; ++j) {
+      
+      PooSweeperMove reveal;
+      
+      int row = rowIndex + i - 1;
+      int col = colIndex + j - 1;
+      
+      if (row >= _numRows || row < 0) continue;
+      if (col >= _numCols || col < 0) continue;
+
+      
+
+      reveal.row = row;
+      reveal.col = col;
+      reveal.type = PooSweeperMove::REVEAL;
+
+      applyMove(reveal);
+    }
+  }
+}
 // _____________________________________________________________________________
 PooSweeperState::GameStatus PooSweeperState::status() const {
   return _gameStatus;

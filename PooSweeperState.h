@@ -39,6 +39,9 @@ class PooSweeperState : public PooSweeperStateBase {
   };
 
  private:
+
+  void autoreveal(size_t rowIndex, size_t colIndex);
+  
   size_t _numRows;
   size_t _numCols;
   size_t _numPoos;
