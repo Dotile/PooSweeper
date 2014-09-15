@@ -4,7 +4,7 @@ MAIN = $(basename $(wildcard *Main.cpp))
 TEST = $(basename $(wildcard *Test.cpp))
 OBJECTS = $(addsuffix .o, $(filter-out %Main %Test, $(basename $(wildcard *.cpp))))
 HEADERS = $(wildcard *.h)
-LIBS =
+LIBS = -lncurses
 
 .PRECIOUS: %.o
 
@@ -22,7 +22,7 @@ checkstyle:
 	$(CXX) -o $@ $^ $(LIBS)
 
 %Test: %Test.o $(OBJECTS)
-	$(CXX) -o $@ $^ $(LIBS) -lgtest -lgtest_main -lpthread
+	$(CXX) -o $@ $^ $(LIBS) -lgtest -lgtest_main -lpthread -lncurses
 
 %.o: %.cpp $(HEADERS)
 	$(CXX) -c $<
