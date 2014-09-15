@@ -209,6 +209,8 @@ TEST(PooSweeperStateTest, getCellInfo) {
     pss._gameStatus = PooSweeperStateBase::ONGOING;
     pss._board.clear();
     pss._pooField.clear();
+    pss._board.resize(1);
+    pss._pooField.resize(1);
     pss._board[0][0] = PooSweeperStateBase::MARKED;
     
     // The return of getCellInfo should be marked (-2).
