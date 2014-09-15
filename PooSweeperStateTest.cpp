@@ -24,6 +24,7 @@ TEST(PooSweeperStateTest, initialize) {
 
 // ________________________________________________________________________
 TEST(PooSweeperStateTest, applyMove) {
+  // Autoreveal
   {
     // 5x5 field with no poos
     PooSweeperState pss;
@@ -58,6 +59,48 @@ TEST(PooSweeperStateTest, applyMove) {
       }
     }
   }
+  // Toogle Mark
+  {
+    // 1x1 field with no poos
+    PooSweeperState pss;
+    pss._numRows = 1;
+    pss._numCols = 1;
+    pss._numPoos = 0;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board.resize(1);
+    pss._pooField.resize(1);
+    // Fill the vectors (no poo and unrevealed)
+    for (int i = 0; i < pss._numRows; ++i) {
+      for (int j = 0; j < pss._numCols; ++j) {
+        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
+        pss._pooField[i].push_back(PooSweeperState::NO_POO);
+      }
+    }
+    // a toggle_mark move at position 0,0
+    PooSweeperMove move;
+    move.col = 0;
+    move.row = 0;
+    move.type = PooSweeperMove::TOGGLE_MARK;
+    // apply created move
+    pss.applyMove(move);
+    // The cell should be marked (-2) now.
+    ASSERT_EQ(-2, pss._board[0][0]);
+
+    // a toggle_mark move at position 0,0
+    PooSweeperMove move2;
+    move2.col = 0;
+    move2.row = 0;
+    move2.type = PooSweeperMove::TOGGLE_MARK;
+    // apply created move
+    pss.applyMove(move2);
+    // The cell should be unrevealed (-1) now.
+    ASSERT_EQ(-1, pss._board[0][0]);
+  }
+
   {
     // 5x5 field just poos
     PooSweeperState pss;
