@@ -32,10 +32,12 @@ void PooSweeperState::initialize
     }
   }
 
-  // Fill the vector randomly with Poos.
+  // Fill the vector randomly with Poos. rand_r for truly random fields each
+  // time with a slight time trade off.
   for (int i = 0; i < _numPoos;) {
-    int _minex = random() % numRows;
-    int _miney = random() % numCols;
+    unsigned int seed = time(0);
+    int _minex = rand_r(&seed) % numRows;
+    int _miney = rand_r(&seed) % numCols;
     // If there is space put in the poo
     if (_pooField[_minex][_miney] == NO_POO) {
       _pooField[_minex][_miney] = POO;
