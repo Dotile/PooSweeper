@@ -27,5 +27,6 @@ TEST(PooSweeperStateTest, initialize2) {
   PooSweeperState pssb;
   pssb.initialize(5, 5, 5);
   ASSERT_EQ(10, pssb.numRows());
+  ASSERT_EQ(5, pssb.numRows());
 }
 
