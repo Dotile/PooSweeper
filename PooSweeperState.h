@@ -44,6 +44,9 @@ class PooSweeperState : public PooSweeperStateBase {
   // autoreveal cells around clicked cells if there is nothing in them.
   void autoreveal(size_t rowIndex, size_t colIndex);
 
+  // sets the game status
+  GameStatus setGameStatus();
+
   // Membervariables
   size_t _numRows;
   size_t _numCols;

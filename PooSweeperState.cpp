@@ -108,19 +108,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       _gameStatus = ONGOING;
 
       // Check if all bombs are marked and if so, win game.
-      int markedPoos;
-      for (int i = 0; i < _numRows; ++i) {
-        for (int j = 0; j < _numCols; ++j) {
-          if (_pooField[i][j] == POO) {
-            if (_board[i][j] == PooSweeperStateBase::MARKED) {
-              markedPoos++;
-            }
-          }
-        }
-      }
-      if (markedPoos == _numPoos) {
-        _gameStatus = WON;
-      }
+      setGameStatus();
       break;
   }
 }
@@ -156,6 +144,15 @@ void PooSweeperState::autoreveal(size_t rowIndex, size_t colIndex) {
 // _____________________________________________________________________________
 PooSweeperState::GameStatus PooSweeperState::status() const {
   return _gameStatus;
+}
+
+// _____________________________________________________________________________
+PooSweeperState::GameStatus PooSweeperState::setGameStatus() {
+  _gameStatus = ONGOING;
+  size_t _numUnrevealed = ((_numRows*_numCols) - _numRevealed);
+  if (_numMarked + _numUnrevealed == _numPoos) {
+    _gameStatus = WON;
+  }
 }
 
 // _____________________________________________________________________________
