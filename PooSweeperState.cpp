@@ -52,6 +52,8 @@ PooSweeperStateBase::CellInfo PooSweeperState::getCellInfo
 
 // _____________________________________________________________________________
 void PooSweeperState::applyMove(const PooSweeperMove& move) {
+  if (_board[move.row][move.col] != PooSweeperStateBase::UNREVEALED) return;
+
   if (move.row >= _numRows || move.row < 0) return;
   if (move.col >= _numCols || move.col < 0) return;
 
@@ -67,7 +69,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       }
       // If there is no bomb look for sourrounding mines and change CellInfo.
       if (_pooField[move.row][move.col] == NO_POO) {
-        int cellInfo = 0;
+        cellInfo = 0;
         // Check these neighboring cells.
         // [][][]
         // []**[]
@@ -89,9 +91,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         _numRevealed++;
         _gameStatus = ONGOING;
         // Autoreveal function
-        if (cellInfo == 0) {
-          autoreveal(move.row , move.col);
-        }
+        autoreveal(move.row , move.col);
       }
       break;
     // Case if the cell is Marked and not Clicked
@@ -127,26 +127,28 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
 
 // _____________________________________________________________________________
 void PooSweeperState::autoreveal(size_t rowIndex, size_t colIndex) {
-  if (_board[rowIndex][colIndex] == UNREVEALED) {
-    return;
-  }
-  for (int i = 0; i < 3; ++i) {
-    for (int j = 0; j < 3; ++j) {
-      PooSweeperMove reveal;
+  if (cellInfo == 0) {
+    if (_board[rowIndex][colIndex] == UNREVEALED) {
+      return;
+    }
+    for (int i = 0; i < 3; ++i) {
+      for (int j = 0; j < 3; ++j) {
+        PooSweeperMove reveal;
 
-      int row = rowIndex + i - 1;
-      int col = colIndex + j - 1;
+        int row = rowIndex + i - 1;
+        int col = colIndex + j - 1;
 
-      if (row >= _numRows || row < 0) continue;
-      if (col >= _numCols || col < 0) continue;
+        if (row >= _numRows || row < 0) continue;
+        if (col >= _numCols || col < 0) continue;
 
 
 
-      reveal.row = row;
-      reveal.col = col;
-      reveal.type = PooSweeperMove::REVEAL;
+        reveal.row = row;
+        reveal.col = col;
+        reveal.type = PooSweeperMove::REVEAL;
 
-      applyMove(reveal);
+        applyMove(reveal);
+      }
     }
   }
 }

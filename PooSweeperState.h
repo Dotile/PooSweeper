@@ -50,6 +50,7 @@ class PooSweeperState : public PooSweeperStateBase {
   size_t _numPoos;
   size_t _numRevealed;
   size_t _numMarked;
+  int cellInfo;
   GameStatus _gameStatus;
 
   std::vector<std::vector<Poo>> _pooField;
