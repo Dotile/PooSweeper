@@ -29,6 +29,7 @@ class PooSweeperState : public PooSweeperStateBase {
 
   // Getters.
   size_t numRows() const;
+  FRIEND_TEST(PooSweeperStateTest, numRows);
   size_t numCols() const;
   size_t numPoos() const;
   size_t numRevealed() const;
