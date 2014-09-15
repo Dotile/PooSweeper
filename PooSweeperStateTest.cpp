@@ -25,7 +25,7 @@ TEST(PooSweeperStateTest, initialize) {
 // ________________________________________________________________________
 TEST(PooSweeperStateTest, applyMove) {
   {
-    // 5x5 field with no poos 
+    // 5x5 field with no poos
     PooSweeperState pss;
     pss._numRows = 5;
     pss._numCols = 5;
@@ -49,7 +49,7 @@ TEST(PooSweeperStateTest, applyMove) {
     move.col = 0;
     move.row = 0;
     move.type = PooSweeperMove::REVEAL;
-    // apply created move 
+    // apply created move
     pss.applyMove(move);
     // All cells should be (auto)revealed (=0).
     for (int i = 0; i < pss._numRows; ++i) {
@@ -78,7 +78,7 @@ TEST(PooSweeperStateTest, applyMove) {
         pss._pooField[i].push_back(PooSweeperState::POO);
       }
     }
-    // create a move
+    // create a reveal move
     PooSweeperMove move;
     move.col = 0;
     move.row = 0;

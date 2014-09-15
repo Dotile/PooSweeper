@@ -55,8 +55,6 @@ class PooSweeperState : public PooSweeperStateBase {
 
   std::vector<std::vector<Poo>> _pooField;
   std::vector<std::vector<CellInfo>> _board;
-  
-  // FRIEND_TEST(PooSweeperStateTest, applyMove);
 };
 
 #endif  // POOSWEEPERSTATE_H_
