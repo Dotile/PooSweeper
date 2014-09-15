@@ -221,3 +221,25 @@ TEST(PooSweeperStateTest, getCellInfo) {
     ASSERT_EQ(8, pss.getCellInfo(11, 0));
   }
 }
+
+// ________________________________________________________________________
+TEST(PooSweeperStateTest, status) {
+  // Won
+  {
+    PooSweeperState pss;
+    pss._gameStatus = PooSweeperStateBase::WON;
+    ASSERT_EQ(pss.WON, pss.status());
+  }
+  // Lost
+  {
+    PooSweeperState pss;
+    pss._gameStatus = PooSweeperStateBase::LOST;
+    ASSERT_EQ(pss.LOST, pss.status());
+  }
+  // Ongoing
+  {
+    PooSweeperState pss;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    ASSERT_EQ(pss.ONGOING, pss.status());
+  }
+}

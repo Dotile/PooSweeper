@@ -27,8 +27,9 @@ class PooSweeperState : public PooSweeperStateBase {
   void applyMove(const PooSweeperMove& move);
   FRIEND_TEST(PooSweeperStateTest, applyMove);
 
-  // Status of the game (Getter basically):
+  // Returns status of the game:
   GameStatus status() const;
+  FRIEND_TEST(PooSweeperStateTest, status);
 
   // Getters.
   size_t numRows() const;
