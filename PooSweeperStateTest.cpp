@@ -247,3 +247,50 @@ TEST(PooSweeperStateTest, autoreveal) {
     }
   }
 }
+
+// ________________________________________________________________________
+TEST(PooSweeperStateTest, setGameStatus) {
+}
+
+// ________________________________________________________________________
+TEST(PooSweeperStateTest, endreveal) {
+  // Lost
+  {
+    // 5x5 field
+    PooSweeperState pss;
+    pss._numRows = 5;
+    pss._numCols = 5;
+    pss._numPoos = 5;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board.resize(5);
+    pss._pooField.resize(5);
+    // Fill the vectors (no poo and unrevealed)
+    for (int i = 0; i < pss._numRows; ++i) {
+      for (int j = 0; j < pss._numCols; ++j) {
+        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
+        pss._pooField[i].push_back(PooSweeperState::NO_POO);
+      }
+    }
+
+    // Add 5 Poos to _pooField and set gamestatus to LOST.
+    pss._pooField[3][4] = PooSweeperState::POO;
+    pss._pooField[2][1] = PooSweeperState::POO;
+    pss._pooField[5][5] = PooSweeperState::POO;
+    pss._pooField[3][1] = PooSweeperState::POO;
+    pss._pooField[1][0] = PooSweeperState::POO;
+
+    pss._gameStatus = PooSweeperStateBase::LOST;
+    pss.endreveal();
+
+    // All cells that contained poos should be revealed poos (-3).
+    ASSERT_EQ(-3 , pss._board[3][4]);
+    ASSERT_EQ(-3 , pss._board[2][1]);
+    ASSERT_EQ(-3 , pss._board[5][5]);
+    ASSERT_EQ(-3 , pss._board[3][1]);
+    ASSERT_EQ(-3 , pss._board[1][0]);
+  }
+}

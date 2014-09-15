@@ -103,9 +103,11 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       if (_board[move.row][move.col] == PooSweeperStateBase::MARKED) {
         _board[move.row][move.col] = UNREVEALED;
         _numMarked--;
+        _numRevealed--;
       } else {
         _board[move.row][move.col] = MARKED;
         _numMarked++;
+        _numRevealed++;
       }
 
       // Check if all bombs are marked and if so, win game.

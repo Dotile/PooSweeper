@@ -49,9 +49,11 @@ class PooSweeperState : public PooSweeperStateBase {
 
   // sets the game status
   void setGameStatus();
+  FRIEND_TEST(PooSweeperStateTest, setGameStatus);
 
   // reveals all mines once game is lost/won.
   void endreveal();
+  FRIEND_TEST(PooSweeperStateTest, endreveal);
 
   // Membervariables
   size_t _numRows;
