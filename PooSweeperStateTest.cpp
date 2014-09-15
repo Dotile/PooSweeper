@@ -21,4 +21,3 @@ TEST(PooSweeperStateTest, initialize) {
   ASSERT_EQ(5, pss.numRows());
   ASSERT_EQ(5, pss.numCols());
 }
-

@@ -126,19 +126,21 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
 
 
 // _____________________________________________________________________________
-void PooSweeperState::autoreveal (size_t rowIndex, size_t colIndex) {
+void PooSweeperState::autoreveal(size_t rowIndex, size_t colIndex) {
+  if (_board[rowIndex][colIndex] == UNREVEALED) {
+    return;
+  }
   for (int i = 0; i < 3; ++i) {
     for (int j = 0; j < 3; ++j) {
-      
       PooSweeperMove reveal;
-      
+
       int row = rowIndex + i - 1;
       int col = colIndex + j - 1;
-      
+
       if (row >= _numRows || row < 0) continue;
       if (col >= _numCols || col < 0) continue;
 
-      
+
 
       reveal.row = row;
       reveal.col = col;
