@@ -45,12 +45,8 @@ void PooSweeper::play() {
         move.type = PooSweeperMove::TOGGLE_MARK;
 
         POO->applyMove(move);
-<<<<<<< HEAD
-      } else if (inputMouse.bstate & BUTTON_SHIFT) {  // CTRL Left Click
-=======
 
       } else if (inputMouse.bstate & BUTTON1_CLICKED) {
->>>>>>> b05df05cec7c12b51ba5ba3907abcdd549d5ad02
         
         PooSweeperMove move;
 
