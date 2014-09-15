@@ -99,12 +99,12 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
     // Case if the cell is Marked and not Clicked
     case PooSweeperMove::TOGGLE_MARK:
       // if the cell is Marked then remove the mark and set unrevealed.
-      if (_board[move.row][move.col] != PooSweeperStateBase::MARKED) {
-        _board[move.row][move.col] = MARKED;
-        _numMarked++;
-      } else if (_board[move.row][move.col] == PooSweeperStateBase::MARKED) {
+      if (_board[move.row][move.col] == PooSweeperStateBase::MARKED) {
         _board[move.row][move.col] = UNREVEALED;
         _numMarked--;
+      } else if (_board[move.row][move.col] != PooSweeperStateBase::MARKED) {
+        _board[move.row][move.col] = MARKED;
+        _numMarked++;
       }
 
       // Check if all bombs are marked and if so, win game.
