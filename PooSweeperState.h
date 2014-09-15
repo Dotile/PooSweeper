@@ -31,7 +31,6 @@ class PooSweeperState : public PooSweeperStateBase {
 
   // Getters.
   size_t numRows() const;
-  FRIEND_TEST(PooSweeperStateTest, numRows);
   size_t numCols() const;
   size_t numPoos() const;
   size_t numRevealed() const;
@@ -56,6 +55,8 @@ class PooSweeperState : public PooSweeperStateBase {
 
   std::vector<std::vector<Poo>> _pooField;
   std::vector<std::vector<CellInfo>> _board;
+  
+  // FRIEND_TEST(PooSweeperStateTest, applyMove);
 };
 
 #endif  // POOSWEEPERSTATE_H_
