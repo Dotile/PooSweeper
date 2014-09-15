@@ -45,7 +45,10 @@ class PooSweeperState : public PooSweeperStateBase {
   void autoreveal(size_t rowIndex, size_t colIndex);
 
   // sets the game status
-  GameStatus setGameStatus();
+  void setGameStatus();
+
+  // reveals all mines once game is lost/won.
+  void endreveal();
 
   // Membervariables
   size_t _numRows;

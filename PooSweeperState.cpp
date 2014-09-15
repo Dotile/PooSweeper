@@ -66,6 +66,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         _board[move.row][move.col] = REVEALED_POO;
         // set Gamestatus to LOST;
         _gameStatus = LOST;
+        endreveal();
         return;
       }
       // If there is no bomb look for sourrounding mines and change CellInfo.
@@ -90,7 +91,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
         }
         _board[move.row][move.col] = CellInfo(cellInfo);
         _numRevealed++;
-        _gameStatus = ONGOING;
+        setGameStatus();
         // Autoreveal function
         autoreveal(move.row , move.col);
       }
@@ -147,11 +148,25 @@ PooSweeperState::GameStatus PooSweeperState::status() const {
 }
 
 // _____________________________________________________________________________
-PooSweeperState::GameStatus PooSweeperState::setGameStatus() {
+void PooSweeperState::setGameStatus() {
   _gameStatus = ONGOING;
   size_t _numUnrevealed = ((_numRows*_numCols) - _numRevealed);
   if (_numMarked + _numUnrevealed == _numPoos) {
     _gameStatus = WON;
+    endreveal();
+  }
+}
+
+// _____________________________________________________________________________
+void PooSweeperState::endreveal() {
+  if (_gameStatus == LOST || _gameStatus == WON) {
+    for (int i = 0; i < _numRows; ++i) {
+      for (int j = 0; j < _numCols; ++j) {
+        if (_pooField[i][j] == POO) {
+          _board[i][j] = REVEALED_POO;
+        }
+      }
+    }
   }
 }
 

@@ -58,24 +58,9 @@ void PooSweeper::play() {
   }
   if (POO->status() == PooSweeperStateBase::LOST ||
       POO->status() == PooSweeperStateBase::WON) {
-    for (int i = 0; i < _numRows; ++i) {
-      for (int j = 0; j < _numCols; ++j) {
-        PooSweeperMove move;
+    // reveal all bombs on the gameboard
+    DISPLAY->show(POO);
 
-        int row = i;
-        int col = j;
-
-        if (row >= _numRows || row < 0) continue;
-        if (col >= _numCols || col < 0) continue;
-
-        move.row = row;
-        move.col = col;
-        move.type = PooSweeperMove::REVEAL;
-
-        POO->applyMove(move);
-        DISPLAY->show(POO);
-      }
-    }
     // if a key is pressed end the game after a win or loss.
     while (true) {
       int end = getch();
