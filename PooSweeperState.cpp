@@ -53,7 +53,8 @@ PooSweeperStateBase::CellInfo PooSweeperState::getCellInfo
 // _____________________________________________________________________________
 void PooSweeperState::applyMove(const PooSweeperMove& move) {
   // If the clicked cell is already revealed return.
-  if (_board[move.row][move.col] != PooSweeperStateBase::UNREVEALED) return;
+  if (_board[move.row][move.col] != PooSweeperStateBase::UNREVEALED &&
+      _board[move.row][move.col] != PooSweeperStateBase::MARKED) return;
 
   if (move.row >= _numRows || move.row < 0) return;
   if (move.col >= _numCols || move.col < 0) return;
@@ -102,7 +103,7 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
       if (_board[move.row][move.col] == PooSweeperStateBase::MARKED) {
         _board[move.row][move.col] = UNREVEALED;
         _numMarked--;
-      } else if (_board[move.row][move.col] != PooSweeperStateBase::MARKED) {
+      } else {
         _board[move.row][move.col] = MARKED;
         _numMarked++;
       }
