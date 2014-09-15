@@ -52,6 +52,7 @@ PooSweeperStateBase::CellInfo PooSweeperState::getCellInfo
 
 // _____________________________________________________________________________
 void PooSweeperState::applyMove(const PooSweeperMove& move) {
+  // If the clicked cell is already revealed return.
   if (_board[move.row][move.col] != PooSweeperStateBase::UNREVEALED) return;
 
   if (move.row >= _numRows || move.row < 0) return;
