@@ -174,18 +174,18 @@ TEST(PooSweeperStateTest, applyMove) {
 // ________________________________________________________________________
 TEST(PooSweeperStateTest, getCellInfo) {
   {
-    // 11x1 field with all CellInfo types
+    // 12x12 field with all CellInfo types
     PooSweeperState pss;
-    pss._numRows = 11;
-    pss._numCols = 11;
+    pss._numRows = 12;
+    pss._numCols = 12;
     pss._numPoos = 0;
     pss._numRevealed = 0;
     pss._numMarked = 0;
     pss._gameStatus = PooSweeperStateBase::ONGOING;
     pss._board.clear();
     pss._pooField.clear();
-    pss._board.resize(11);
-    pss._pooField.resize(11);
+    pss._board.resize(12);
+    pss._pooField.resize(12);
     // Fill the vectors (no poo and unrevealed)
     for (int i = 0; i < pss._numRows; ++i) {
       for (int j = 0; j < pss._numCols; ++j) {
@@ -205,7 +205,7 @@ TEST(PooSweeperStateTest, getCellInfo) {
     pss._board[9][0] = PooSweeperStateBase::REVEALED_SIX;
     pss._board[10][0] = PooSweeperStateBase::REVEALED_SEVEN;
     pss._board[11][0] = PooSweeperStateBase::REVEALED_EIGHT;
-    
+
     // The return of getCellInfo should be unevealed (-1).
     ASSERT_EQ(-1, pss.getCellInfo(0, 0));
     ASSERT_EQ(-3, pss.getCellInfo(1, 0));
