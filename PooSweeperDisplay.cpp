@@ -117,13 +117,13 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
 
     // Case if the Game is LOST
     case PooSweeperStateBase::LOST:
-      printf("\x1b[%zu;%dH", state->numRows() + 2, 0);  // lu bc. size_t numRows
+      printf("\x1b[%zu;%dH", state->numRows() + 2, 0);  // zu bc. size_t numRows
       std::cout << "You lost the game. Press any key to quit." << std::endl;
       break;
 
     // Case if the Game is WON.
     case PooSweeperStateBase::WON:
-      printf("\x1b[%zu;%dH", state->numRows() + 2, 0);  // lu bc. size_t numRows
+      printf("\x1b[%zu;%dH", state->numRows() + 2, 0);  // zu bc. size_t numRows
       std::cout << "You won the game!" << std::endl;
       break;
   }

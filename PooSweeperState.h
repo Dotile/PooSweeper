@@ -15,16 +15,17 @@ extern PooSweeperStateBase* POO;
 // Class representing a state of the Minesweeper game.
 class PooSweeperState : public PooSweeperStateBase {
  public:
-  CellInfo getCellInfo(size_t rowIndex, size_t colIndex) const;
-
-  // Initialize (randomly).
+  // create the gameboard and a field of Poos with user input from PooSweeper.h
   void initialize(size_t numRows, size_t numCols, size_t numPoos);
   FRIEND_TEST(PooSweeperStateTest, initialize);
 
-  // Apply move.
+  // return the CellInfo of a cell on the gameboard
+  CellInfo getCellInfo(size_t rowIndex, size_t colIndex) const;
+
+  // Apply move from play function in PooSweeper.h
   void applyMove(const PooSweeperMove& move);
 
-  // Status of the game:
+  // Status of the game (Getter basically):
   GameStatus status() const;
 
   // Getters.
@@ -40,8 +41,10 @@ class PooSweeperState : public PooSweeperStateBase {
   };
 
  private:
+  // autoreveal cells around clicked cells if there is nothing in them.
   void autoreveal(size_t rowIndex, size_t colIndex);
 
+  // Membervariables
   size_t _numRows;
   size_t _numCols;
   size_t _numPoos;

@@ -11,7 +11,7 @@ PooSweeperStateBase* POO = &poo;
 // _____________________________________________________________________________
 void PooSweeperState::initialize
 (size_t numRows, size_t numCols, size_t numPoos) {
-  // Membervariables
+  // set membervariables and game status
   _numRows = numRows;
   _numCols = numCols;
   _numPoos = numPoos;

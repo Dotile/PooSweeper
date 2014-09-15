@@ -9,15 +9,18 @@
 // _____________________________________________________________________________
 PooSweeper::PooSweeper() {
   // Get boardgame simensions (in x and y) from user
+  printf("\x1b[%d;%dH", 1, 0);
   std::cout << "Enter game field x-size:"<< std::endl;
   std::cin >> _numRows;
   std::cout << std::endl;
+  printf("\x1b[%d;%dH", 2, 0);
   std::cout << "Enter game field y-size:"<< std::endl;
   std::cin >> _numCols;
   std::cout << std::endl;
 
   // Get quantity of mines from user
-  std::cout << "Enter number of shits:"<< std::endl;
+  printf("\x1b[%d;%dH", 3, 0);
+  std::cout << "Enter number of Poos:"<< std::endl;
   std::cin >> _numPoos;
   std::cout << std::endl;
 }
@@ -69,7 +72,8 @@ void PooSweeper::play() {
         DISPLAY->show(POO);
       }
     }
-    while (true) {  // if there is a key pressed end the game
+    // if a key is pressed end the game after a win or loss.
+    while (true) {
       int end = getch();
       if (end != -1) break;
     }

@@ -12,10 +12,10 @@
 
 class PooSweeper {
  public:
-  // Constructor
+  // Constructor, asks for user input at the start of the game.
   PooSweeper();
 
-  // Play Method.
+  // Manage the game and catch mouseevents for moves.
   void play();
 
   // Destructor
