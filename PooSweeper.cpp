@@ -37,22 +37,22 @@ void PooSweeper::play() {
     int ch = getch();  // Get keycode.
     if (getmouse(&inputMouse) == OK) {  // Some mouse event happend.
       // Left Click
-      if (inputMouse.bstate & BUTTON1_CLICKED) {
-        PooSweeperMove move;
-
-        move.col = inputMouse.x;
-        move.row = inputMouse.y;
-        move.type = PooSweeperMove::REVEAL;
-
-        POO->applyMove(move);
-      } 
-      if (inputMouse.bstate & BUTTON_SHIFT) {  // CTRL Left Click
-        
+      if (inputMouse.bstate & BUTTON_CTRL) {
         PooSweeperMove move;
 
         move.col = inputMouse.x;
         move.row = inputMouse.y;
         move.type = PooSweeperMove::TOGGLE_MARK;
+
+        POO->applyMove(move);
+
+      } else if (inputMouse.bstate & BUTTON1_CLICKED) {
+        
+        PooSweeperMove move;
+
+        move.col = inputMouse.x;
+        move.row = inputMouse.y;
+        move.type = PooSweeperMove::REVEAL;
 
         POO->applyMove(move);
       }
