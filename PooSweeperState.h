@@ -21,6 +21,7 @@ class PooSweeperState : public PooSweeperStateBase {
 
   // return the CellInfo of a cell on the gameboard
   CellInfo getCellInfo(size_t rowIndex, size_t colIndex) const;
+  FRIEND_TEST(PooSweeperStateTest, getCellInfo);
 
   // Apply move from play function in PooSweeper.h
   void applyMove(const PooSweeperMove& move);

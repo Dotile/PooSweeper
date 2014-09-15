@@ -170,4 +170,48 @@ TEST(PooSweeperStateTest, applyMove) {
     }
   }
 }
-// ____________________________________________________________________________
+
+// ________________________________________________________________________
+TEST(PooSweeperStateTest, getCellInfo) {
+  // Unrevealed
+  {
+    // 1x1 field with no poos
+    PooSweeperState pss;
+    pss._numRows = 1;
+    pss._numCols = 1;
+    pss._numPoos = 0;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board.resize(1);
+    pss._pooField.resize(1);
+    // Fill the vectors (no poo and unrevealed)
+    for (int i = 0; i < pss._numRows; ++i) {
+      for (int j = 0; j < pss._numCols; ++j) {
+        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
+        pss._pooField[i].push_back(PooSweeperState::NO_POO);
+      }
+    }
+    // The return of getCellInfo should be unevealed (-1).
+    ASSERT_EQ(-1, pss.getCellInfo(0, 0));
+  }
+  // Marked
+  {
+    // 1x1 field with no poos
+    PooSweeperState pss;
+    pss._numRows = 1;
+    pss._numCols = 1;
+    pss._numPoos = 0;
+    pss._numRevealed = 0;
+    pss._numMarked = 1;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board[0][0] = PooSweeperStateBase::MARKED;
+    
+    // The return of getCellInfo should be marked (-2).
+    ASSERT_EQ(-2, pss.getCellInfo(0, 0));
+  }
+}
