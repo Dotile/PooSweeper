@@ -64,8 +64,14 @@ void PooSweeper::play() {
       for (int j = 0; j < _numCols; ++j) {
         PooSweeperMove move;
 
-        move.row = i;
-        move.col = j;
+        int row = i;
+        int col = j;
+
+        if (row >= _numRows || row < 0) continue;
+        if (col >= _numCols || col < 0) continue;
+        
+        move.row = row;
+        move.col = col;
         move.type = PooSweeperMove::REVEAL;
 
         POO->applyMove(move);
