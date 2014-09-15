@@ -13,8 +13,8 @@ all: compile test checkstyle
 compile: $(MAIN) $(TEST)
 
 test: compile
-	for T in $(TEST); do ./$$T; done
-
+	g++ -g -std=c++0x -o PooSweeperStateTest PooSweeperStateTest.o PooSweeperState.o -lncurses -lgtest -lgtest_main -lpthread
+	./PooSweeperStateTest
 checkstyle:
 	$(CHECKSTYLE) *.cpp *.h
 

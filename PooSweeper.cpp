@@ -47,7 +47,7 @@ void PooSweeper::play() {
         POO->applyMove(move);
       }
       // Left  CTRL-Click
-      if (inputMouse.bstate & BUTTON_CTRL) {
+      else if (inputMouse.bstate & BUTTON_CTRL) {
         PooSweeperMove move;
 
         move.col = inputMouse.x;
