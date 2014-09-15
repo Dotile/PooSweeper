@@ -52,36 +52,52 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
           printf("\x1b[0m");
           break;
         case PooSweeperStateBase::REVEALED_ONE:
-          // show a 1 (blue)
+          // show a 1
+          printf("\x1b[34m");
           printf("1");
+          printf("\x1b[0m");
           break;
         case PooSweeperStateBase::REVEALED_TWO:
           // show a 2 (green)
+          printf("\x1b[1;32m");
           printf("2");
+          printf("\x1b[0m");
           break;
         case PooSweeperStateBase::REVEALED_THREE:
           // show a 3 (red)
+          printf("\x1b[1;31m");
           printf("3");
+          printf("\x1b[0m");
           break;
         case PooSweeperStateBase::REVEALED_FOUR:
           // show a 4 (darkblue/ purple)
+          printf("\x1b[34m");
           printf("4");
+          printf("\x1b[0m");
           break;
         case PooSweeperStateBase::REVEALED_FIVE:
           // show a 5 (maroon / red)
+          printf("\x1b[1;35m");
           printf("5");
+          printf("\x1b[0m");
           break;
         case PooSweeperStateBase::REVEALED_SIX:
           // show a 6 (cyan/blue)
+          printf("\x1b[1;36m");
           printf("6");
+          printf("\x1b[0m");
           break;
         case PooSweeperStateBase::REVEALED_SEVEN:
-          // show a 7 (black)
+          // show a 7 (black / yellow)
+          printf("\x1b[1;33m");
           printf("7");
+          printf("\x1b[0m");
           break;
         case PooSweeperStateBase::REVEALED_EIGHT:
           // show a 8 (grey)
+          printf("\x1b[1;37m");
           printf("8");
+          printf("\x1b[0m");
           break;
       }
     }
