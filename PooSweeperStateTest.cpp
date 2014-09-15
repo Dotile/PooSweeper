@@ -59,41 +59,6 @@ TEST(PooSweeperStateTest, applyMove) {
       }
     }
   }
-  // Autoreveal
-  {
-    // 5x5 field with no poos
-    PooSweeperState pss;
-    pss._numRows = 5;
-    pss._numCols = 5;
-    pss._numPoos = 0;
-    pss._numRevealed = 0;
-    pss._numMarked = 0;
-    pss._gameStatus = PooSweeperStateBase::ONGOING;
-    pss._board.clear();
-    pss._pooField.clear();
-    pss._board.resize(5);
-    pss._pooField.resize(5);
-    // Fill the vectors (no poo and unrevealed)
-    for (int i = 0; i < pss._numRows; ++i) {
-      for (int j = 0; j < pss._numCols; ++j) {
-        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
-        pss._pooField[i].push_back(PooSweeperState::NO_POO);
-      }
-    }
-    // a reveal move at position 0,0
-    PooSweeperMove move;
-    move.col = 0;
-    move.row = 0;
-    move.type = PooSweeperMove::REVEAL;
-    // apply created move
-    pss.applyMove(move);
-    // All cells should be (auto)revealed (=0).
-    for (int i = 0; i < pss._numRows; ++i) {
-      for (int j = 0; j < pss._numCols; ++j) {
-        ASSERT_EQ(0, pss._board[i][j]);
-      }
-    }
-  }
   // Toogle Mark
   {
     // 1x1 field with no poos
@@ -241,5 +206,44 @@ TEST(PooSweeperStateTest, status) {
     PooSweeperState pss;
     pss._gameStatus = PooSweeperStateBase::ONGOING;
     ASSERT_EQ(pss.ONGOING, pss.status());
+  }
+}
+
+// ________________________________________________________________________
+TEST(PooSweeperStateTest, autoreveal) {
+  // Autoreveal
+  {
+    // 5x5 field with no poos
+    PooSweeperState pss;
+    pss._numRows = 5;
+    pss._numCols = 5;
+    pss._numPoos = 0;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board.resize(5);
+    pss._pooField.resize(5);
+    // Fill the vectors (no poo and unrevealed)
+    for (int i = 0; i < pss._numRows; ++i) {
+      for (int j = 0; j < pss._numCols; ++j) {
+        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
+        pss._pooField[i].push_back(PooSweeperState::NO_POO);
+      }
+    }
+    // a reveal move at position 0,0
+    PooSweeperMove move;
+    move.col = 0;
+    move.row = 0;
+    move.type = PooSweeperMove::REVEAL;
+    // apply created move
+    pss.applyMove(move);
+    // All cells should be (auto)revealed (=0).
+    for (int i = 0; i < pss._numRows; ++i) {
+      for (int j = 0; j < pss._numCols; ++j) {
+        ASSERT_EQ(0, pss._board[i][j]);
+      }
+    }
   }
 }
