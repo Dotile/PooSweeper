@@ -114,7 +114,6 @@ void PooSweeperState::applyMove(const PooSweeperMove& move) {
   }
 }
 
-
 // _____________________________________________________________________________
 void PooSweeperState::autoreveal(size_t rowIndex, size_t colIndex) {
   if (cellInfo == 0) {

@@ -38,8 +38,6 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
           break;
         case PooSweeperStateBase::REVEALED_ZERO:
           // show revealed cell (idea:inverted unrevealed?)
-          // printf("\x1b[0m");
-          // printf(" ");
           printf("0");
           break;
         case PooSweeperStateBase::REVEALED_POO:
