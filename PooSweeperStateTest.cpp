@@ -6,24 +6,59 @@
 
 // _________________________________________________________________________
 TEST(PooSweeperStateTest, initialize) {
-  PooSweeperState pssa;
-  pssa.initialize(10, 10, 10);
+  PooSweeperState pss;
+  pss.initialize(10, 10, 10);
   // Is the quantity of bombs correct?
   size_t count = 0;
   for (int i = 0; i < 10; ++i) {
     for (int j = 0; j < 10; ++j) {
-      if (pssa._pooField[i][j] == PooSweeperState::POO) {
+      if (pss._pooField[i][j] == PooSweeperState::POO) {
         ++count;
       }
     }
   }
   ASSERT_EQ(10, count);
-  ASSERT_EQ(10, pssa.numRows());
-  ASSERT_EQ(10, pssa.numCols());
+  ASSERT_EQ(10, pss.numRows());
+  ASSERT_EQ(10, pss.numCols());
 }
 
 // ________________________________________________________________________
 TEST(PooSweeperStateTest, applyMove) {
+  // Reveal
+  {
+    // 10x10 field with no poos
+    PooSweeperState pss;
+    pss._numRows = 10;
+    pss._numCols = 10;
+    pss._numPoos = 10;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board.resize(10);
+    pss._pooField.resize(10);
+    // Fill the vectors
+    for (int i = 0; i < pss._numRows; ++i) {
+      for (int j = 0; j < pss._numCols; ++j) {
+        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
+        pss._pooField[i].push_back(PooSweeperState::NO_POO);
+      }
+    }
+    // a reveal move at position 0,0
+    PooSweeperMove move;
+    move.col = 2;
+    move.row = 2;
+    move.type = PooSweeperMove::REVEAL;
+    // apply created move
+    pss.applyMove(move);
+    // The cell should be revealed (!= -1).
+    for (int i = 0; i < pss._numRows; ++i) {
+      for (int j = 0; j < pss._numCols; ++j) {
+        ASSERT_NE(-1 , pss._board[1][1]);
+      }
+    }
+  }
   // Autoreveal
   {
     // 5x5 field with no poos
@@ -100,7 +135,6 @@ TEST(PooSweeperStateTest, applyMove) {
     // The cell should be unrevealed (-1) now.
     ASSERT_EQ(-1, pss._board[0][0]);
   }
-
   {
     // 5x5 field just poos
     PooSweeperState pss;
