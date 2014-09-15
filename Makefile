@@ -22,7 +22,7 @@ checkstyle:
 	$(CXX) -o $@ $^ $(LIBS)
 
 %Test: %Test.o $(OBJECTS)
-	$(CXX) -o $@ $^ $(LIBS) -lgtest -lgtest_main -lpthread -lncurses
+	$(CXX) -o $@ $^ $(LIBS) -lgtest -lgtest_main -lpthread
 
 %.o: %.cpp $(HEADERS)
 	$(CXX) -c $<

@@ -91,7 +91,7 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
     // Case if the Game is ONGOING
     case PooSweeperStateBase::ONGOING:
       // Print left mines and flags and such here.
-      printf("\x1b[%lu;%dH", state->numRows() + 1, 0);  // lu bc. size_t numRows
+      printf("\x1b[%zu;%dH", state->numRows() + 1, 0);  // lu bc. size_t numRows
       std::cout << "#Poos:" << state->numPoos();
       std::cout << "   ";
       std::cout << "#Flags:" << state->numMarked();
@@ -101,13 +101,13 @@ void PooSweeperDisplay::show(const PooSweeperStateBase* state) const {
 
     // Case if the Game is LOST
     case PooSweeperStateBase::LOST:
-      printf("\x1b[%lu;%dH", state->numRows() + 2, 0);  // lu bc. size_t numRows
+      printf("\x1b[%zu;%dH", state->numRows() + 2, 0);  // lu bc. size_t numRows
       std::cout << "You lost the game. Press any key to quit." << std::endl;
       break;
 
     // Case if the Game is WON.
     case PooSweeperStateBase::WON:
-      printf("\x1b[%lu;%dH", state->numRows() + 2, 0);  // lu bc. size_t numRows
+      printf("\x1b[%zu;%dH", state->numRows() + 2, 0);  // lu bc. size_t numRows
       std::cout << "You won the game!" << std::endl;
       break;
   }
