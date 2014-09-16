@@ -154,7 +154,7 @@ PooSweeperState::GameStatus PooSweeperState::status() const {
 void PooSweeperState::setGameStatus() {
   _gameStatus = ONGOING;
   size_t _numUnrevealed = ((_numRows*_numCols) - _numRevealed);
-  if (_numMarked + _numUnrevealed == _numPoos) {
+  if (_numUnrevealed == _numPoos) {
     _gameStatus = WON;
 //    endreveal();
   }
