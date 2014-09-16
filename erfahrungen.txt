@@ -1,0 +1,21 @@
+Das Projekt ist eigentlich ganz gut gelaufen bei mir. Ich habe relativ frueh
+angefangen, da ich Anfang September noch andere Klausuren hatte und mit cpp schon
+fertig seien wollte zu dem Zeitpunkt.
+Der meiste Code wurde innerhalb von 1 bis  1,5 Wochen geschrieben, jedoch
+dauerte es laenger die entstehenden Fehler zu beheben. Am laengsten brauchte ich
+fuer einen Fehler in der Rekursion den ich erst nicht beheben konnte und dann
+nicht mehr programmieren konnte, da ich noch auf Klausuren lernen musste. 
+Erst kurz vor Abgabe (2 Tage) konnte ich den Fehler mit Hilfe aus dem Forum
+beheben und somit mein Program fertig stellen. 
+
+Am schwierigsten fande ich es eine klare Struktur in das Programm einzubauen und
+zu implementieren. Mein Programm mag zwar nicht das uebersichtlichste sein
+dafuer funktioniert es immerhin..
+
+Hilfreich wuerde ich finden wenn es im Forum (das allein ist sehr hilfreich)
+einen "sticky post" oder aehnliches geben wuerde, in dem aktuelle Aenderungen der
+Vorgaben und anderem stehen koennte. Der Post in dem diskutiert wird wie man
+mit rand_r ein Feld immer zuefalig erstellen kann, sodass das Spielfeld immer
+anders ist, koennte da stehen. So wuerde jeder der an dem Projekt arbeitet noch
+hifreiche Tipps sehen die man nach nach der Vorlesung hinzufuegt. 
+

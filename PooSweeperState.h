@@ -1,7 +1,7 @@
 // Copyright 2014 Dominik Leclerc
 
-#ifndef POOSWEEPERSTATE_H_
-#define POOSWEEPERSTATE_H_
+#ifndef PROJEKT_POOSWEEPERSTATE_H_
+#define PROJEKT_POOSWEEPERSTATE_H_
 
 #include <gtest/gtest.h>
 #include <vector>
@@ -68,4 +68,4 @@ class PooSweeperState : public PooSweeperStateBase {
   std::vector<std::vector<CellInfo>> _board;
 };
 
-#endif  // POOSWEEPERSTATE_H_
+#endif  // PROJEKT_POOSWEEPERSTATE_H_
