@@ -156,7 +156,7 @@ void PooSweeperState::setGameStatus() {
   size_t _numUnrevealed = ((_numRows*_numCols) - _numRevealed);
   if (_numMarked + _numUnrevealed == _numPoos) {
     _gameStatus = WON;
-    endreveal();
+//    endreveal();
   }
 }
 

@@ -557,7 +557,38 @@ TEST(PooSweeperStateTest, setGameStatus) {
     ASSERT_EQ(PooSweeperStateBase::ONGOING , pss._gameStatus);
 
     // all fields revealed, status should be won.
-    pss._numPoos = 25;
+    pss._numRevealed = 25;
+    pss.setGameStatus();
+    ASSERT_EQ(PooSweeperStateBase::WON , pss._gameStatus);
+  }
+  // all marked, some fields revealed
+  {
+    // 5x5 field
+    PooSweeperState pss;
+    pss._numRows = 5;
+    pss._numCols = 5;
+    pss._numPoos = 5;
+    pss._numRevealed = 15;
+    pss._numMarked = 5;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss.setGameStatus();
+    // all fields revealed, status should be ongoing.
+    ASSERT_EQ(PooSweeperStateBase::ONGOING , pss._gameStatus);
+  }
+  // all marked, all fields revealed
+  {
+    // 5x5 field
+    PooSweeperState pss;
+    pss._numRows = 5;
+    pss._numCols = 5;
+    pss._numPoos = 5;
+    pss._numRevealed = 5;
+    pss._numMarked = 5;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss.setGameStatus();
+    // status should be ongoing.
+    ASSERT_EQ(PooSweeperStateBase::ONGOING , pss._gameStatus);
+    pss._numRevealed = 25;
     ASSERT_EQ(PooSweeperStateBase::WON , pss._gameStatus);
   }
 }
