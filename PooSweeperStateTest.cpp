@@ -542,7 +542,26 @@ TEST(PooSweeperStateTest, autoreveal) {
 
 // ________________________________________________________________________
 TEST(PooSweeperStateTest, setGameStatus) {
+  // all fields revealed
+  {
+    // 5x5 field
+    PooSweeperState pss;
+    pss._numRows = 5;
+    pss._numCols = 5;
+    pss._numPoos = 0;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss.setGameStatus();
+    // see if game status is ONGOING
+    ASSERT_EQ(PooSweeperStateBase::ONGOING , pss._gameStatus);
+
+    // all fields revealed, status should be won.
+    pss._numPoos = 25;
+    ASSERT_EQ(PooSweeperStateBase::WON , pss._gameStatus);
+  }
 }
+
 
 // ________________________________________________________________________
 TEST(PooSweeperStateTest, endreveal) {
