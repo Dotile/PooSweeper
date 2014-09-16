@@ -6,8 +6,8 @@
 #include "./PooSweeperDisplayBase.h"
 #include "./PooSweeperMove.h"
 
-#ifndef POOSWEEPER_H_
-#define POOSWEEPER_H_
+#ifndef PROJEKT_POOSWEEPER_H_
+#define PROJEKT_POOSWEEPER_H_
 
 
 class PooSweeper {
@@ -27,4 +27,4 @@ class PooSweeper {
   int _numPoos;
 };
 
-#endif  // POOSWEEPER_H_
+#endif  // PROJEKT_POOSWEEPER_H_

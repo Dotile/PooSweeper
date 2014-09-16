@@ -134,6 +134,298 @@ TEST(PooSweeperStateTest, applyMove) {
       }
     }
   }
+  // CellInfo 1
+  {
+    // 3x3 field with 1 poos
+    PooSweeperState pss;
+    pss._numRows = 3;
+    pss._numCols = 3;
+    pss._numPoos = 1;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board.resize(3);
+    pss._pooField.resize(3);
+    // Fill the vectors
+    for (int i = 0; i < 3; ++i) {
+      for (int j = 0; j < 3; ++j) {
+        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
+        pss._pooField[i].push_back(PooSweeperState::NO_POO);
+      }
+    }
+    // put in Poos
+    pss._pooField[0][0] = PooSweeperState::POO;
+    // a reveal move at position 1,1
+    PooSweeperMove move;
+    move.col = 1;
+    move.row = 1;
+    move.type = PooSweeperMove::REVEAL;
+    // apply created move
+    pss.applyMove(move);
+    // The cellinfo should be 1 (1)
+    ASSERT_EQ(1 , pss._board[1][1]);
+  }
+  // CellInfo 2
+  {
+    // 3x3 field with 2 poos
+    PooSweeperState pss;
+    pss._numRows = 3;
+    pss._numCols = 3;
+    pss._numPoos = 2;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board.resize(3);
+    pss._pooField.resize(3);
+    // Fill the vectors
+    for (int i = 0; i < 3; ++i) {
+      for (int j = 0; j <3; ++j) {
+        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
+        pss._pooField[i].push_back(PooSweeperState::NO_POO);
+      }
+    }
+    // put in Poos
+    pss._pooField[0][0] = PooSweeperState::POO;
+    pss._pooField[0][1] = PooSweeperState::POO;
+    // a reveal move at position 1,1
+    PooSweeperMove move;
+    move.col = 1;
+    move.row = 1;
+    move.type = PooSweeperMove::REVEAL;
+    // apply created move
+    pss.applyMove(move);
+    // The cellinfo should be 2 (2)
+    ASSERT_EQ(2 , pss._board[1][1]);
+  }
+  // CellInfo 3
+  {
+    // 3x3 field with 3 poos
+    PooSweeperState pss;
+    pss._numRows = 3;
+    pss._numCols = 3;
+    pss._numPoos = 3;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board.resize(3);
+    pss._pooField.resize(3);
+    // Fill the vectors
+    for (int i = 0; i < 3; ++i) {
+      for (int j = 0; j < 3; ++j) {
+        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
+        pss._pooField[i].push_back(PooSweeperState::NO_POO);
+      }
+    }
+    // put in Poos
+    pss._pooField[0][0] = PooSweeperState::POO;
+    pss._pooField[0][1] = PooSweeperState::POO;
+    pss._pooField[0][2] = PooSweeperState::POO;
+    // a reveal move at position 1,1
+    PooSweeperMove move;
+    move.col = 1;
+    move.row = 1;
+    move.type = PooSweeperMove::REVEAL;
+    // apply created move
+    pss.applyMove(move);
+    // The cellinfo should be 3
+    ASSERT_EQ(3 , pss._board[1][1]);
+  }
+  // CellInfo 4
+  {
+    // 3x3 field with 4 poos
+    PooSweeperState pss;
+    pss._numRows = 3;
+    pss._numCols = 3;
+    pss._numPoos = 4;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board.resize(3);
+    pss._pooField.resize(3);
+    // Fill the vectors
+    for (int i = 0; i < 3; ++i) {
+      for (int j = 0; j < 3; ++j) {
+        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
+        pss._pooField[i].push_back(PooSweeperState::NO_POO);
+      }
+    }
+    // put in Poos
+    pss._pooField[0][0] = PooSweeperState::POO;
+    pss._pooField[0][1] = PooSweeperState::POO;
+    pss._pooField[0][2] = PooSweeperState::POO;
+    pss._pooField[1][0] = PooSweeperState::POO;
+    // a reveal move at position 1,1
+    PooSweeperMove move;
+    move.col = 1;
+    move.row = 1;
+    move.type = PooSweeperMove::REVEAL;
+    // apply created move
+    pss.applyMove(move);
+    // The cellinfo should be 4
+    ASSERT_EQ(4 , pss._board[1][1]);
+  }
+  // CellInfo 5
+  {
+    // 3x3 field with 5 poos
+    PooSweeperState pss;
+    pss._numRows = 3;
+    pss._numCols = 3;
+    pss._numPoos = 5;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board.resize(3);
+    pss._pooField.resize(3);
+    // Fill the vectors
+    for (int i = 0; i < 3; ++i) {
+      for (int j = 0; j < 3; ++j) {
+        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
+        pss._pooField[i].push_back(PooSweeperState::NO_POO);
+      }
+    }
+    // put in Poos
+    pss._pooField[0][0] = PooSweeperState::POO;
+    pss._pooField[0][1] = PooSweeperState::POO;
+    pss._pooField[0][2] = PooSweeperState::POO;
+    pss._pooField[1][0] = PooSweeperState::POO;
+    pss._pooField[1][2] = PooSweeperState::POO;
+    // a reveal move at position 1,1
+    PooSweeperMove move;
+    move.col = 1;
+    move.row = 1;
+    move.type = PooSweeperMove::REVEAL;
+    // apply created move
+    pss.applyMove(move);
+    // The cellinfo should be 5
+    ASSERT_EQ(5 , pss._board[1][1]);
+  }
+  // CellInfo 6
+  {
+    // 3x3 field with 6 poos
+    PooSweeperState pss;
+    pss._numRows = 3;
+    pss._numCols = 3;
+    pss._numPoos = 6;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board.resize(3);
+    pss._pooField.resize(3);
+    // Fill the vectors
+    for (int i = 0; i < 3; ++i) {
+      for (int j = 0; j < 3; ++j) {
+        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
+        pss._pooField[i].push_back(PooSweeperState::NO_POO);
+      }
+    }
+    // put in Poos
+    pss._pooField[0][0] = PooSweeperState::POO;
+    pss._pooField[0][1] = PooSweeperState::POO;
+    pss._pooField[0][2] = PooSweeperState::POO;
+    pss._pooField[1][0] = PooSweeperState::POO;
+    pss._pooField[1][2] = PooSweeperState::POO;
+    pss._pooField[2][0] = PooSweeperState::POO;
+    // a reveal move at position 1,1
+    PooSweeperMove move;
+    move.col = 1;
+    move.row = 1;
+    move.type = PooSweeperMove::REVEAL;
+    // apply created move
+    pss.applyMove(move);
+    // The cellinfo should be 6
+    ASSERT_EQ(6 , pss._board[1][1]);
+  }
+  // CellInfo 7
+  {
+    // 3x3 field with 7 poos
+    PooSweeperState pss;
+    pss._numRows = 3;
+    pss._numCols = 3;
+    pss._numPoos = 7;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board.resize(3);
+    pss._pooField.resize(3);
+    // Fill the vectors
+    for (int i = 0; i < 3; ++i) {
+      for (int j = 0; j < 3; ++j) {
+        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
+        pss._pooField[i].push_back(PooSweeperState::NO_POO);
+      }
+    }
+    // put in Poos
+    pss._pooField[0][0] = PooSweeperState::POO;
+    pss._pooField[0][1] = PooSweeperState::POO;
+    pss._pooField[0][2] = PooSweeperState::POO;
+    pss._pooField[1][0] = PooSweeperState::POO;
+    pss._pooField[1][2] = PooSweeperState::POO;
+    pss._pooField[2][0] = PooSweeperState::POO;
+    pss._pooField[2][1] = PooSweeperState::POO;
+    // a reveal move at position 1,1
+    PooSweeperMove move;
+    move.col = 1;
+    move.row = 1;
+    move.type = PooSweeperMove::REVEAL;
+    // apply created move
+    pss.applyMove(move);
+    // The cellinfo should be 7
+    ASSERT_EQ(7 , pss._board[1][1]);
+  }
+  // CellInfo 8
+  {
+    // 3x3 field with 8 poos
+    PooSweeperState pss;
+    pss._numRows = 3;
+    pss._numCols = 3;
+    pss._numPoos = 8;
+    pss._numRevealed = 0;
+    pss._numMarked = 0;
+    pss._gameStatus = PooSweeperStateBase::ONGOING;
+    pss._board.clear();
+    pss._pooField.clear();
+    pss._board.resize(3);
+    pss._pooField.resize(3);
+    // Fill the vectors
+    for (int i = 0; i < 3; ++i) {
+      for (int j = 0; j < 3; ++j) {
+        pss._board[i].push_back(PooSweeperStateBase::UNREVEALED);
+        pss._pooField[i].push_back(PooSweeperState::NO_POO);
+      }
+    }
+    // put in Poos
+    pss._pooField[0][0] = PooSweeperState::POO;
+    pss._pooField[0][1] = PooSweeperState::POO;
+    pss._pooField[0][2] = PooSweeperState::POO;
+    pss._pooField[1][0] = PooSweeperState::POO;
+    pss._pooField[1][2] = PooSweeperState::POO;
+    pss._pooField[2][0] = PooSweeperState::POO;
+    pss._pooField[2][1] = PooSweeperState::POO;
+    pss._pooField[2][2] = PooSweeperState::POO;
+    // a reveal move at position 1,1
+    PooSweeperMove move;
+    move.col = 1;
+    move.row = 1;
+    move.type = PooSweeperMove::REVEAL;
+    // apply created move
+    pss.applyMove(move);
+    // The cellinfo should be 7
+    ASSERT_EQ(8 , pss._board[1][1]);
+  }
 }
 
 // ________________________________________________________________________

@@ -4,8 +4,8 @@
 
 #include "./PooSweeperDisplayBase.h"
 
-#ifndef POOSWEEPERDISPLAY_H_
-#define POOSWEEPERDISPLAY_H_
+#ifndef PROJEKT_POOSWEEPERDISPLAY_H_
+#define PROJEKT_POOSWEEPERDISPLAY_H_
 
 class PooSweeperDisplayBase;
 extern PooSweeperDisplayBase* DISPLAY;
@@ -23,4 +23,4 @@ class PooSweeperDisplay : public PooSweeperDisplayBase {
   ~PooSweeperDisplay();
 };
 
-#endif  // POOSWEEPERDISPLAY_H_
+#endif  // PROJEKT_POOSWEEPERDISPLAY_H_
