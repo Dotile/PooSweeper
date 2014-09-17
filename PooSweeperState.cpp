@@ -34,8 +34,8 @@ void PooSweeperState::initialize
 
   // Fill the vector randomly with Poos. rand_r for truly random fields each
   // time with a slight time trade off.
+  unsigned int seed = time(0);
   for (int i = 0; i < _numPoos;) {
-    unsigned int seed = time(0);
     int _minex = rand_r(&seed) % numRows;
     int _miney = rand_r(&seed) % numCols;
     // If there is space put in the poo
@@ -154,7 +154,7 @@ PooSweeperState::GameStatus PooSweeperState::status() const {
 void PooSweeperState::setGameStatus() {
   _gameStatus = ONGOING;
   size_t _numUnrevealed = ((_numRows*_numCols) - _numRevealed);
-  if (_numUnrevealed == _numPoos) {
+  if (_numMarked + _numUnrevealed == _numPoos) {
     _gameStatus = WON;
 //    endreveal();
   }

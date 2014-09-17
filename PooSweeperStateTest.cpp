@@ -589,6 +589,8 @@ TEST(PooSweeperStateTest, setGameStatus) {
     // status should be ongoing.
     ASSERT_EQ(PooSweeperStateBase::ONGOING , pss._gameStatus);
     pss._numRevealed = 25;
+    pss.setGameStatus();
+    // status should be won.
     ASSERT_EQ(PooSweeperStateBase::WON , pss._gameStatus);
   }
 }
